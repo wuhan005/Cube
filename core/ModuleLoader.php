@@ -1,15 +1,17 @@
 <?php
 require_once('core/Functions.php');
 
-//The Cube system's module name.
-//The user can't use these name.
 class ModuleLoader
 {
+    //The Cube system's module name.
+    //The user can't use these name.
     private $sysModule = ['Main','Setting'];
 
     public $module; //The module info which display in stage.
 
-    public function Load($moduleName){
+    //The INIT and the LOAD should be separated.
+
+    public function Init($moduleName){
         $isSystem = in_array($moduleName , $this->sysModule);
         $moduleHeader = $this->get_module_header($moduleName,$isSystem);
 
@@ -20,16 +22,19 @@ class ModuleLoader
                 die();
             }
         }
+
+        //The module headers which users can only use.
         $this->module['Name'] = $moduleHeader['Name'];
         $this->module['Version'] = $moduleHeader['Version'];
         $this->module['Description'] = $moduleHeader['Description'];
         $this->module['Author'] = $moduleHeader['Author'];
         $this->module['AuthorURI'] = $moduleHeader['AuthorURI'];
-        $this->module['Path'] = $moduleHeader['Path'];
-        
+        $this->module['Path'] = $moduleHeader['Path'];   
+    }
+
+    public function Load(){
         //Loaded!
         $this->loadStage();
-        
     }
 
     private function loadStage(){

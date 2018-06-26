@@ -8,10 +8,18 @@ if($nowPage == null){
     $nowPage = 'Main';
 }
 
+//PAY ATTENTION TO THE LOADING ORDER.
+
+//Init the module.
+require_once 'core/ModuleLoader.php';
+$mLoader = new ModuleLoader;
+$mLoader->Init($nowPage);
+
 //Load the UI part.
 require_once 'core/SlideBar.php';
 
-//Load the module
-require_once 'core/ModuleLoader.php';
-$mLoader = new ModuleLoader;
-$mLoader->Load($nowPage);
+//Load the module.
+$mLoader->Load();
+
+//Load the footer.
+require_once 'core/Footer.php';
