@@ -1,7 +1,7 @@
 <?php
 /*
-Module Name: Cube
-Description: Be cool. But also be warm.
+Module Name: Account
+Description: 管理账户
 Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0

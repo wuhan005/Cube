@@ -5,33 +5,46 @@ class ModuleLoader
 {
     //The Cube system's module name.
     //The user can't use these name.
-    private $sysModule = ['Main','Setting'];
+    private $sysModule = ['Main','Setting','Account','Manager'];
+
+    private $modulePath;
+    private $moduleName;
+    private $isSystem;
 
     public $module; //The module info which display in stage.
+    public $nowModule;
 
     //The INIT and the LOAD should be separated.
 
     public function Init($moduleName){
         $isSystem = in_array($moduleName , $this->sysModule);
+
+        //GET THE MODULE HEADER HERE!!!
         $moduleHeader = $this->get_module_header($moduleName,$isSystem);
 
         //If it's system module,turn error.
         if($isSystem){
-            if($moduleHeader['System'] != 'True' ){
+            if($moduleHeader['System'] != True ){
                 back_error();
                 die();
             }
         }
 
+        $nowModule = $this->module['Name'];
+
         //The module headers which users can only use.
+        //'module[]' will be sent to the user in the ModuleStage.
         $this->module['Name'] = $moduleHeader['Name'];
-        $this->module['Version'] = $moduleHeader['Version'];
-        $this->module['Description'] = $moduleHeader['Description'];
-        $this->module['Author'] = $moduleHeader['Author'];
-        $this->module['AuthorURI'] = $moduleHeader['AuthorURI'];
-        $this->module['Path'] = $moduleHeader['Path'];   
+        $this->module['Version'] = $this->emptyFix($moduleHeader['Version']);
+        $this->module['Description'] = $this->emptyFix($moduleHeader['Description']);
+        $this->module['Icon'] = $this->emptyFix($moduleHeader['Icon']);
+        $this->module['Author'] = $this->emptyFix($moduleHeader['Author']);
+        $this->module['AuthorURI'] = $this->emptyFix($moduleHeader['AuthorURI']);
+        $this->module['PathName'] = $moduleName;    //The module folder's name.
+        $this->module['Path'] = $moduleHeader['Path'];
     }
 
+    //PUBLIC USED. Load the module.
     public function Load(){
         //Loaded!
         $this->loadStage();
@@ -42,29 +55,43 @@ class ModuleLoader
     }
 
     private function get_module_header($moduleName,$isSystem=false){
+
+        $this->moduleName = $moduleName;
+        $this->isSystem = $isSystem;
+
         if($isSystem){
-            $modulePath = 'core/module/' . $moduleName .'/' . $moduleName . '.php';
+            $this->modulePath = 'core/module/' . $moduleName .'/' . $moduleName . '.php';
         }else{
-            $modulePath = 'Module/'. $moduleName .'/' . $moduleName . '.php';
+            $this->modulePath = 'Module/'. $moduleName .'/' . $moduleName . '.php';
         }
     
+        //Make sure the main PHP file is existed.
+        if(!file_exists($this->modulePath)){
+            //Return error header.
+            return $this->errorPage($this->moduleName);
+        }else{
+            return $this->getHeaders();
+        }
+    }
+
+    private function getHeaders(){
         //Just read the file.
-        $fp = fopen($modulePath,'r');
-        $file_data = fread($fp,filesize($modulePath));
+        $fp = fopen($this->modulePath,'r');
+        $file_data = fread($fp,filesize($this->modulePath));
         fclose($fp);
-    
+
         //Make sure we catch CR-only line endings.
         $file_data = str_replace("\r", "\n", $file_data);
-    
+
         //The back array's format.
         $allHeaders = array(
             'Name'        => 'Module Name',
             'Version'     => 'Version',
             'Description' => 'Description',
+            'Icon'        => 'Icon',
             'Author'      => 'Author',
-            'AuthorURI'   => 'Author URI',
+            'AuthorURI'   => 'Author URI'
         );
-    
         foreach ( $allHeaders as $field => $regex ) {
             if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $regex, '/' ) . ':(.*)$/mi', $file_data, $match ) && $match[1] ) {
                 $allHeaders[ $field ] = $this->_cleanup_header_comment( $match[1] );
@@ -73,19 +100,51 @@ class ModuleLoader
                 $allHeaders[ $field ] = '';
             }   
         }
-    
-        if($isSystem){
-            $allHeaders['System'] = 'True';
+
+        //Add the isSystem info.
+        if($this->isSystem){
+            $allHeaders['System'] = True;
+        }else{
+            $allHeaders['System'] = False;
         }
-    
+
         //Add the path, used by the ModuleStage
-        $allHeaders['Path'] = $modulePath;
-    
-        return $allHeaders;
+        $allHeaders['Path'] = $this->modulePath;
+
+        //Make sure the headers is correct.
+        //'Name','Path' is not empty.
+        if( ( $allHeaders['Name'] == '' ) or ( $allHeaders['Path'] == '') ){
+            return $this->errorPage('UNTITLED');
+        }else{
+            return $allHeaders;
+        }
+    }
+
+    //If the main PHP is missing, return a error page header.
+    private function errorPage($moduleName){
+        $errorHeaders = array(
+            'Name'        => '[错误] '.$moduleName,
+            'Version'     => '1.0',
+            'Description' => '该小工具存在一个错误，无法运行！',
+            'Icon'        => 'bug',
+            'Author'      => '',
+            'AuthorURI'   => '',
+            'Path'        => '/core/module/Error/Error.php'
+        );
+        return $errorHeaders;
     }
     
     //Clean the useless part.
     private  function _cleanup_header_comment( $str ) {
         return trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $str ) );
+    }
+
+    //Make the 'null' to empty or it occurs WARNING.
+    private function emptyFix($arrayValue){
+        if($arrayValue == null){
+            return '';
+        }else{
+            return $arrayValue;
+        }
     }
 }

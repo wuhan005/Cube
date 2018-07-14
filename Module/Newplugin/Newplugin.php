@@ -1,7 +1,8 @@
 <?php
 /*
-Module Name: Cube
-Description: Be cool. But also be warm.
+Module Name:
+Description: 测试
+Icon: ticket-star
 Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0
@@ -9,5 +10,5 @@ Version: 1.0.0
 ?>
 
 <div class="main-content container-fluid">
-    <h3 class="text-center">这里是主页！</h3>
+    <h3 class="text-center"></h3>
 </div>

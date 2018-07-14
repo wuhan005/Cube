@@ -1,7 +1,7 @@
 <?php
 /*
-Module Name: Cube
-Description: Be cool. But also be warm.
+Module Name: Manager
+Description: 管理每一个小工具
 Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0

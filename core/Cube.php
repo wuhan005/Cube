@@ -10,6 +10,11 @@ if($nowPage == null){
 
 //PAY ATTENTION TO THE LOADING ORDER.
 
+//Init the silder.
+require_once 'core/SliderDisplayer.php';
+$slider = new SliderDisplayer;
+$slider->nowPage = $nowPage;    //Used to control the active class.
+
 //Init the module.
 require_once 'core/ModuleLoader.php';
 $mLoader = new ModuleLoader;

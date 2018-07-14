@@ -61,15 +61,21 @@
               <div class="left-sidebar-content">
                 <ul class="sidebar-elements">
                 <!--Slider Bar -->
-                  <li class="divider">Tools</li>
-                  <li class="active"><a href="Main">
+                  <li <?php echo $slider->active('Main');?>><a href="Main">
                       <i class="icon mdi mdi-home"></i><span>Home</span></a>
                   </li>
+                  <li class="divider">Tools</li>
+
+                  <?php $slider->showSlider();?>
+
                   <li class="divider">Options</li>
-                  <li class=""><a href="Account">
+                  <li <?php echo $slider->active('Account');?>><a href="Account">
                       <i class="icon mdi mdi-face"></i><span>Account</span></a>
                   </li>
-                  <li class=""><a href="Setting">
+                  <li <?php echo $slider->active('Manager');?>><a href="Manager">
+                      <i class="icon mdi mdi-label"></i><span>Manager</span></a>
+                  </li>
+                  <li <?php echo $slider->active('Setting');?>><a href="Setting">
                       <i class="icon mdi mdi-settings"></i><span>Setting</span></a>
                   </li>
                 </ul>
