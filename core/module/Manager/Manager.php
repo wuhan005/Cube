@@ -6,8 +6,23 @@ Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0
 */
-?>
 
-<div class="main-content container-fluid">
-    <h3 class="text-center">这里是主页！</h3>
-</div>
+require_once('core/ModuleFinder.php');
+require_once('core/ModuleLoader.php');
+
+
+
+$mFinder = new ModuleFinder();
+$moduleList = $mFinder->getModuleList();
+
+$mLoader = new ModuleLoader();  //Used to load the single module.
+
+
+$moduleDetailList = array();
+
+foreach($moduleList as $value){
+    $mLoader->Init($value); 
+    $moduleDetailList[] = $mLoader->module;   //Add the single module's info to the detail list.
+}
+
+require_once('Manager_mainpage.php');
