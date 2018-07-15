@@ -5,7 +5,7 @@ Description: 这不是普通的小工具，它代表着我高三后期时的精�
 Icon: ticket-star
 Author: John Wu
 Author URI: https://wuhan5.cc/
-Version: 1.0.0
+Version: 1.1
 */
 
 $dialogue = [
@@ -55,6 +55,9 @@ $dialogue = [
                     <strong><?php echo $dialogue[array_rand($dialogue,1)];?></strong>
                     <br>
                     <p class="text-right">——《Black★Rock Shooter》</p>
+                </div>
+                <div class='text-right'>
+                    <button class="btn btn-space btn-primary" onclick="refresh()">我永远喜欢黑岩射手！</button>
                 </div>
             </div>
         </div>

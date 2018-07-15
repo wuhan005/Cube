@@ -15,15 +15,15 @@ require_once 'DataBase.php';
 $db = new DataBase;
 $db->Init();
 
-//Init the silder.
-require_once 'core/SliderDisplayer.php';
-$slider = new SliderDisplayer;
-$slider->nowPage = $nowPage;    //Used to control the active class.
-
 //Init the module.
 require_once 'core/ModuleLoader.php';
 $mLoader = new ModuleLoader;
 $mLoader->Init($nowPage);
+
+//Init the silder.
+require_once 'core/SliderDisplayer.php';
+$slider = new SliderDisplayer;
+$slider->nowPage = $nowPage;    //Used to control the active class.
 
 //Load the UI part.
 require_once 'core/SlideBar.php';
