@@ -10,6 +10,11 @@ if($nowPage == null){
 
 //PAY ATTENTION TO THE LOADING ORDER.
 
+//Load the database.
+require_once 'DataBase.php';
+$db = new DataBase;
+$db->Init();
+
 //Init the silder.
 require_once 'core/SliderDisplayer.php';
 $slider = new SliderDisplayer;

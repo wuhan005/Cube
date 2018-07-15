@@ -50,17 +50,8 @@
                 echo('<td class="cell-detail"><span>');
                 //DESCRIPTION
                 echo($Item['Description']);echo('</span></td>');
-                echo('
-                <td class="text-right">
-                <div class="btn-group btn-hspace">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">启用 <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" href="#">启用</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">删除</a>
-                    </div>
-                </div>
-                </td>
-                </tr>
-                ');
+                //Generate Dropdown UI.
+                dropdown($Item['PathName'],$Item['isStart']);
             }
             ?>
             </tbody>
