@@ -7,26 +7,31 @@ class SliderDisplayer{
     private $mFinder;
     private $moduleList;
     private $mLoader;
+    private $onModule;
 
     public $nowPage; //Data from the Cube.php
 
     public function __construct(){
+        global $db;
         $this->mFinder = new ModuleFinder();
         $this->moduleList = $this->mFinder->getModuleList();
         $this->mLoader = new ModuleLoader();    //Used to get the module name.
+        $this->onModule = $db->getOnModule();
     }
 
     public function showSlider(){
         foreach($this->moduleList as $module){
-
             $this->mLoader->Init($module);
-            $moduleName = $this->mLoader->module['Name'];
-            $moduleIcon = $this->mLoader->module['Icon'];
             $modulePathName = $this->mLoader->module['PathName'];
+            //Judge the module is started or not.
+            if(in_array($modulePathName,$this->onModule)){
+                $moduleName = $this->mLoader->module['Name'];
+                $moduleIcon = $this->mLoader->module['Icon'];
 
-            echo('<li ' . $this->active($modulePathName) . '><a href="' . $module . '"><i class="icon mdi mdi-' . $moduleIcon . '"></i><span>');
-            echo($moduleName); //Module Name
-            echo('</span></a></li>');
+                echo('<li ' . $this->active($modulePathName) . '><a href="' . $module . '"><i class="icon mdi mdi-' . $moduleIcon . '"></i><span>');
+                echo($moduleName); //Module Name
+                echo('</span></a></li>');
+            }
         }
     }
 
