@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   $.extend($.summernote.lang, {
     'pt-BR': {
       font: {
@@ -9,8 +9,6 @@
         height: 'Altura da linha',
         name: 'Fonte',
         strikethrough: 'Riscado',
-        subscript: 'Subscript',
-        superscript: 'Superscript',
         size: 'Tamanho da fonte'
       },
       image: {
@@ -22,18 +20,9 @@
         floatLeft: 'Flutuar para Esquerda',
         floatRight: 'Flutuar para Direira',
         floatNone: 'Não Flutuar',
-        shapeRounded: 'Shape: Rounded',
-        shapeCircle: 'Shape: Circle',
-        shapeThumbnail: 'Shape: Thumbnail',
-        shapeNone: 'Shape: None',
         dragImageHere: 'Arraste uma imagem para cá',
-        dropImage: 'Drop image or Text',
         selectFromFiles: 'Selecione a partir dos arquivos',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
-        url: 'URL da imagem',
-        remove: 'Remove Image',
-        original: 'Original'
+        url: 'URL da imagem'
       },
       video: {
         video: 'Vídeo',
@@ -58,8 +47,7 @@
         addColLeft: 'Adicionar coluna a esquerda',
         addColRight: 'Adicionar coluna a direita',
         delRow: 'Excluir linha',
-        delCol: 'Excluir coluna',
-        delTable: 'Delete table'
+        delCol: 'Excluir coluna'
       },
       hr: {
         insert: 'Inserir linha horizontal'
@@ -110,8 +98,11 @@
         textFormatting: 'Formatação de texto',
         action: 'Ação',
         paragraphFormatting: 'Formatação de parágrafo',
-        documentStyle: 'Estilo de documento',
-        extraKeys: 'Extra keys'
+        documentStyle: 'Estilo de documento'
+      },
+      history: {
+        undo: 'Desfazer',
+        redo: 'Refazer'
       },
       help: {
         'insertParagraph': 'Inserir Parágrafo',
@@ -141,14 +132,6 @@
         'formatH6': 'Alterar formato do bloco para H6',
         'insertHorizontalRule': 'Inserir régua horizontal',
         'linkDialog.show': 'Inserir um Hiperlink'
-      },
-      history: {
-        undo: 'Desfazer',
-        redo: 'Refazer'
-      },
-      specialChar: {
-        specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
       }
     }
   });

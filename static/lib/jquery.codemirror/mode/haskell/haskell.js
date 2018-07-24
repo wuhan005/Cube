@@ -197,14 +197,13 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       "\.\.", ":", "::", "=", "\\", "<-", "->", "@", "~", "=>");
 
     setType("builtin")(
-      "!!", "$!", "$", "&&", "+", "++", "-", ".", "/", "/=", "<", "<*", "<=",
-      "<$>", "<*>", "=<<", "==", ">", ">=", ">>", ">>=", "^", "^^", "||", "*",
-      "*>", "**");
+      "!!", "$!", "$", "&&", "+", "++", "-", ".", "/", "/=", "<", "<=", "=<<",
+      "==", ">", ">=", ">>", ">>=", "^", "^^", "||", "*", "**");
 
     setType("builtin")(
-      "Applicative", "Bool", "Bounded", "Char", "Double", "EQ", "Either", "Enum",
-      "Eq", "False", "FilePath", "Float", "Floating", "Fractional", "Functor",
-      "GT", "IO", "IOError", "Int", "Integer", "Integral", "Just", "LT", "Left",
+      "Bool", "Bounded", "Char", "Double", "EQ", "Either", "Enum", "Eq",
+      "False", "FilePath", "Float", "Floating", "Fractional", "Functor", "GT",
+      "IO", "IOError", "Int", "Integer", "Integral", "Just", "LT", "Left",
       "Maybe", "Monad", "Nothing", "Num", "Ord", "Ordering", "Rational", "Read",
       "ReadS", "Real", "RealFloat", "RealFrac", "Right", "Show", "ShowS",
       "String", "True");
@@ -224,7 +223,7 @@ CodeMirror.defineMode("haskell", function(_config, modeConfig) {
       "lcm", "length", "lex", "lines", "log", "logBase", "lookup", "map",
       "mapM", "mapM_", "max", "maxBound", "maximum", "maybe", "min", "minBound",
       "minimum", "mod", "negate", "not", "notElem", "null", "odd", "or",
-      "otherwise", "pi", "pred", "print", "product", "properFraction", "pure",
+      "otherwise", "pi", "pred", "print", "product", "properFraction",
       "putChar", "putStr", "putStrLn", "quot", "quotRem", "read", "readFile",
       "readIO", "readList", "readLn", "readParen", "reads", "readsPrec",
       "realToFrac", "recip", "rem", "repeat", "replicate", "return", "reverse",

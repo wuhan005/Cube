@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Spanish(United State) [es-us]
+//! author : bustta : https://github.com/bustta
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -8,8 +10,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_'),
-    monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
+var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_');
+var monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
 
 var esUs = moment.defineLocale('es-us', {
     months : 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
@@ -28,12 +30,12 @@ var esUs = moment.defineLocale('es-us', {
     weekdaysMin : 'do_lu_ma_mi_ju_vi_sá'.split('_'),
     weekdaysParseExact : true,
     longDateFormat : {
-        LT : 'h:mm A',
-        LTS : 'h:mm:ss A',
+        LT : 'H:mm',
+        LTS : 'H:mm:ss',
         L : 'MM/DD/YYYY',
         LL : 'MMMM [de] D [de] YYYY',
-        LLL : 'MMMM [de] D [de] YYYY h:mm A',
-        LLLL : 'dddd, MMMM [de] D [de] YYYY h:mm A'
+        LLL : 'MMMM [de] D [de] YYYY H:mm',
+        LLLL : 'dddd, MMMM [de] D [de] YYYY H:mm'
     },
     calendar : {
         sameDay : function () {
@@ -57,7 +59,6 @@ var esUs = moment.defineLocale('es-us', {
         future : 'en %s',
         past : 'hace %s',
         s : 'unos segundos',
-        ss : '%d segundos',
         m : 'un minuto',
         mm : '%d minutos',
         h : 'una hora',

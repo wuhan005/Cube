@@ -1,34 +1,33 @@
 {
   "_args": [
     [
-      "moment@2.21.0",
-      "C:\\dev\\control\\beagle"
+      "moment@2.19.1",
+      "/home/miguel/projects/beagle"
     ]
   ],
-  "_from": "moment@2.21.0",
-  "_id": "moment@2.21.0",
+  "_from": "moment@2.19.1",
+  "_id": "moment@2.19.1",
   "_inBundle": false,
-  "_integrity": "sha512-TCZ36BjURTeFTM/CwRcViQlfkMvL1/vFISuNLO5GkcVm1+QHfbSiNqZuWeMFjj1/3+uAjXswgRk30j1kkLYJBQ==",
+  "_integrity": "sha1-VtoaLRy/AdOLfhr8McELz6GSkWc=",
   "_location": "/moment",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "moment@2.21.0",
+    "raw": "moment@2.19.1",
     "name": "moment",
     "escapedName": "moment",
-    "rawSpec": "2.21.0",
+    "rawSpec": "2.19.1",
     "saveSpec": null,
-    "fetchSpec": "2.21.0"
+    "fetchSpec": "2.19.1"
   },
   "_requiredBy": [
     "/",
-    "/chart.js",
     "/fullcalendar"
   ],
-  "_resolved": "https://registry.npmjs.org/moment/-/moment-2.21.0.tgz",
-  "_spec": "2.21.0",
-  "_where": "C:\\dev\\control\\beagle",
+  "_resolved": "https://registry.npmjs.org/moment/-/moment-2.19.1.tgz",
+  "_spec": "2.19.1",
+  "_where": "/home/miguel/projects/beagle",
   "author": {
     "name": "Iskren Ivov Chernev",
     "email": "iskren.chernev@gmail.com",
@@ -148,5 +147,5 @@
     ]
   },
   "typings": "./moment.d.ts",
-  "version": "2.21.0"
+  "version": "2.19.1"
 }

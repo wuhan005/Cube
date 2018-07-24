@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   $.extend($.summernote.lang, {
     'fa-IR': {
       font: {
@@ -9,8 +9,6 @@
         height: 'فاصله ی خطی',
         name: 'اسم فونت',
         strikethrough: 'Strike',
-        subscript: 'Subscript',
-        superscript: 'Superscript',
         size: 'اندازه ی فونت'
       },
       image: {
@@ -22,18 +20,10 @@
         floatLeft: 'چسباندن به چپ',
         floatRight: 'چسباندن به راست',
         floatNone: 'بدون چسبندگی',
-        shapeRounded: 'Shape: Rounded',
-        shapeCircle: 'Shape: Circle',
-        shapeThumbnail: 'Shape: Thumbnail',
-        shapeNone: 'Shape: None',
         dragImageHere: 'یک تصویر را اینجا بکشید',
-        dropImage: 'Drop image or Text',
         selectFromFiles: 'فایل ها را انتخاب کنید',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
         url: 'آدرس تصویر',
-        remove: 'حذف تصویر',
-        original: 'Original'
+        remove: 'حذف تصویر'
       },
       video: {
         video: 'ویدیو',
@@ -52,14 +42,7 @@
         openInNewWindow: 'در یک پنجره ی جدید باز شود'
       },
       table: {
-        table: 'جدول',
-        addRowAbove: 'Add row above',
-        addRowBelow: 'Add row below',
-        addColLeft: 'Add column left',
-        addColRight: 'Add column right',
-        delRow: 'Delete row',
-        delCol: 'Delete column',
-        delTable: 'Delete table'
+        table: 'جدول'
       },
       hr: {
         insert: 'افزودن خط افقی'
@@ -110,46 +93,13 @@
         textFormatting: 'فرمت متن',
         action: 'عملیات',
         paragraphFormatting: 'فرمت پاراگراف',
-        documentStyle: 'استیل سند',
-        extraKeys: 'Extra keys'
-      },
-      help: {
-        'insertParagraph': 'Insert Paragraph',
-        'undo': 'Undoes the last command',
-        'redo': 'Redoes the last command',
-        'tab': 'Tab',
-        'untab': 'Untab',
-        'bold': 'Set a bold style',
-        'italic': 'Set a italic style',
-        'underline': 'Set a underline style',
-        'strikethrough': 'Set a strikethrough style',
-        'removeFormat': 'Clean a style',
-        'justifyLeft': 'Set left align',
-        'justifyCenter': 'Set center align',
-        'justifyRight': 'Set right align',
-        'justifyFull': 'Set full align',
-        'insertUnorderedList': 'Toggle unordered list',
-        'insertOrderedList': 'Toggle ordered list',
-        'outdent': 'Outdent on current paragraph',
-        'indent': 'Indent on current paragraph',
-        'formatPara': 'Change current block\'s format as a paragraph(P tag)',
-        'formatH1': 'Change current block\'s format as H1',
-        'formatH2': 'Change current block\'s format as H2',
-        'formatH3': 'Change current block\'s format as H3',
-        'formatH4': 'Change current block\'s format as H4',
-        'formatH5': 'Change current block\'s format as H5',
-        'formatH6': 'Change current block\'s format as H6',
-        'insertHorizontalRule': 'Insert horizontal rule',
-        'linkDialog.show': 'Show Link Dialog'
+        documentStyle: 'استیل سند'
       },
       history: {
         undo: 'واچیدن',
         redo: 'بازچیدن'
-      },
-      specialChar: {
-        specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
       }
     }
   });
 })(jQuery);
+

@@ -2,7 +2,6 @@
   "_from": "git+https://github.com/foxythemes/jvectormap.git#master",
   "_id": "jvectormap@1.0.0",
   "_inBundle": false,
-  "_integrity": "sha1-/otoF1Q2zQgyvXO2mcqGJ1qZRWw=",
   "_location": "/jvectormap",
   "_phantomChildren": {},
   "_requested": {
@@ -20,7 +19,7 @@
   ],
   "_resolved": "git+https://github.com/foxythemes/jvectormap.git#467a493d82641f1ab3d105c82861ef0449cfdd06",
   "_spec": "jvectormap@git+https://github.com/foxythemes/jvectormap.git#master",
-  "_where": "C:\\dev\\control\\beagle",
+  "_where": "/home/miguel/projects/beagle",
   "author": "",
   "bugs": {
     "url": "https://github.com/foxythemes/jvectormap/issues"

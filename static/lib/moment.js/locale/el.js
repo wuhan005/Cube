@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Greek [el]
+//! author : Aggelos Karalias : https://github.com/mehiel
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -74,7 +76,6 @@ var el = moment.defineLocale('el', {
         future : 'σε %s',
         past : '%s πριν',
         s : 'λίγα δευτερόλεπτα',
-        ss : '%d δευτερόλεπτα',
         m : 'ένα λεπτό',
         mm : '%d λεπτά',
         h : 'μία ώρα',

@@ -602,9 +602,7 @@ var excelStrings = {
 				'<fill>'+
 					'<patternFill patternType="none" />'+
 				'</fill>'+
-				'<fill>'+ // Excel appears to use this as a dotted background regardless of values but
-					'<patternFill patternType="none" />'+ // to be valid to the schema, use a patternFill
-				'</fill>'+
+				'<fill/>'+ // Excel appears to use this as a dotted background regardless of values
 				'<fill>'+
 					'<patternFill patternType="solid">'+
 						'<fgColor rgb="FFD9D9D9" />'+
@@ -1033,12 +1031,7 @@ DataTable.ext.buttons.excelHtml5 = {
 
 				// For null, undefined of blank cell, continue so it doesn't create the _createNode
 				if ( row[i] === null || row[i] === undefined || row[i] === '' ) {
-					if ( config.createEmptyCells === true ) {
-						row[i] = '';
-					}
-					else {
-						continue;
-					}
+					continue;
 				}
 
 				row[i] = $.trim( row[i] );
@@ -1134,7 +1127,7 @@ DataTable.ext.buttons.excelHtml5 = {
 					ref: 'A'+row+':'+createCellPos(colspan)+row
 				}
 			} ) );
-			mergeCells.attr( 'count', parseFloat(mergeCells.attr( 'count' ))+1 );
+			mergeCells.attr( 'count', mergeCells.attr( 'count' )+1 );
 			$('row:eq('+(row-1)+') c', rels).attr( 's', '51' ); // centre
 		};
 
@@ -1191,11 +1184,6 @@ DataTable.ext.buttons.excelHtml5 = {
 			config.customize( xlsx );
 		}
 
-		// Excel doesn't like an empty mergeCells tag
-		if ( $('mergeCells', rels).children().length === 0 ) {
-			$('mergeCells', rels).remove();
-		}
-
 		var jszip = _jsZip();
 		var zip = new jszip();
 		var zipConfig = {
@@ -1238,9 +1226,7 @@ DataTable.ext.buttons.excelHtml5 = {
 
 	messageTop: '*',
 
-	messageBottom: '*',
-
-	createEmptyCells: false
+	messageBottom: '*'
 };
 
 //
@@ -1365,12 +1351,16 @@ DataTable.ext.buttons.pdfHtml5 = {
 
 		if ( config.download === 'open' && ! _isDuffSafari() ) {
 			pdf.open();
+			this.processing( false );
 		}
 		else {
-			pdf.download( info.filename );
-		}
+			pdf.getBuffer( function (buffer) {
+				var blob = new Blob( [buffer], {type:'application/pdf'} );
 
-		this.processing( false );
+				_saveAs( blob, info.filename );
+				that.processing( false );
+			} );
+		}
 	},
 
 	title: '*',

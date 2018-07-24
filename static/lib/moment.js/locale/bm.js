@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Bambara [bm]
+//! author : Estelle Comment : https://github.com/estellecomment
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -7,6 +9,7 @@
    factory(global.moment)
 }(this, (function (moment) { 'use strict';
 
+// Language contact person : Abdoufata Kane : https://github.com/abdoufata
 
 var bm = moment.defineLocale('bm', {
     months : 'Zanwuyekalo_Fewuruyekalo_Marisikalo_Awirilikalo_Mɛkalo_Zuwɛnkalo_Zuluyekalo_Utikalo_Sɛtanburukalo_ɔkutɔburukalo_Nowanburukalo_Desanburukalo'.split('_'),
@@ -34,7 +37,6 @@ var bm = moment.defineLocale('bm', {
         future : '%s kɔnɔ',
         past : 'a bɛ %s bɔ',
         s : 'sanga dama dama',
-        ss : 'sekondi %d',
         m : 'miniti kelen',
         mm : 'miniti %d',
         h : 'lɛrɛ kelen',

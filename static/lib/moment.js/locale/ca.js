@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Catalan [ca]
+//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -53,7 +55,6 @@ var ca = moment.defineLocale('ca', {
         future : 'd\'aquí %s',
         past : 'fa %s',
         s : 'uns segons',
-        ss : '%d segons',
         m : 'un minut',
         mm : '%d minuts',
         h : 'una hora',

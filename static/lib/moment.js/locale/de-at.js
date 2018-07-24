@@ -1,4 +1,9 @@
 //! moment.js locale configuration
+//! locale : German (Austria) [de-at]
+//! author : lluchs : https://github.com/lluchs
+//! author: Menelion Elensúle: https://github.com/Oire
+//! author : Martin Groller : https://github.com/MadMG
+//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -50,7 +55,6 @@ var deAt = moment.defineLocale('de-at', {
         future : 'in %s',
         past : 'vor %s',
         s : 'ein paar Sekunden',
-        ss : '%d Sekunden',
         m : processRelativeTime,
         mm : '%d Minuten',
         h : processRelativeTime,

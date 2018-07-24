@@ -1,3 +1,10 @@
+/*!
+ * Beagle v1.5.0
+ * https://foxythemes.net
+ *
+ * Copyright (c) 2018 Foxy Themes
+ */
+
 /* BASICS */
 
 .CodeMirror {
@@ -270,7 +277,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
 .CodeMirror-linewidget {
   position: relative;
   z-index: 2;
-  padding: 0.1px; /* Force widget margins to stay inside of the container */
+  overflow: auto;
 }
 
 .CodeMirror-widget {}

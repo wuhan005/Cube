@@ -141,7 +141,7 @@ class ModuleLoader
             'Icon'        => 'bug',
             'Author'      => '',
             'AuthorURI'   => '',
-            'Path'        => '/core/module/Error/Error.php'
+            'Path'        => './core/module/Error/Error.php'
         );
         return $errorHeaders;
     }
@@ -155,7 +155,7 @@ class ModuleLoader
             'Icon'        => '',
             'Author'      => '',
             'AuthorURI'   => '',
-            'Path'        => '/core/module/Forbidden/Forbidden.php'
+            'Path'        => './core/module/Forbidden/Forbidden.php'
         );
         return $forbiddenHeaders;
     }

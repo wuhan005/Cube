@@ -9,7 +9,7 @@ class DataBase{
     private $mFinder;
 
     public function Init(){
-        $this->db = new SQLite3('DataBase/Cube.db');
+        $this->db = new SQLite3('./database/Cube.db');
         $this->mFinder = new ModuleFinder();
         //$this->updateModule();
     }

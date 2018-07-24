@@ -54,8 +54,8 @@ declare module 'fullcalendar/src/util' {
 	    top: number;
 	};
 	export function parseFieldSpecs(input: any): any[];
-	export function compareByFieldSpecs(obj1: any, obj2: any, fieldSpecs: any, obj1fallback?: any, obj2fallback?: any): any;
-	export function compareByFieldSpec(obj1: any, obj2: any, fieldSpec: any, obj1fallback: any, obj2fallback: any): any;
+	export function compareByFieldSpecs(obj1: any, obj2: any, fieldSpecs: any): any;
+	export function compareByFieldSpec(obj1: any, obj2: any, fieldSpec: any): any;
 	export function flexibleCompare(a: any, b: any): number;
 	export const dayIDs: string[];
 	export const unitsDesc: string[];
@@ -280,8 +280,8 @@ declare module 'fullcalendar/GlobalEmitter' {
 	    stopListeningTo: ListenerInterface['stopListeningTo'];
 	    isTouching: boolean;
 	    mouseIgnoreDepth: number;
-	    handleScrollProxy: (ev: Event) => void;
-	    handleTouchMoveProxy: (ev: Event) => void;
+	    handleScrollProxy: (ev) => void;
+	    handleTouchMoveProxy: (ev) => void;
 	    static get(): any;
 	    static needed(): void;
 	    static unneeded(): void;
@@ -1417,7 +1417,6 @@ declare module 'fullcalendar/src/types/input-types' {
 	    icon?: string;
 	    themeIcon?: string;
 	    bootstrapGlyphicon?: string;
-	    bootstrapFontAwesome?: string;
 	    click(element: JQuery): void;
 	}
 	export interface ButtonIconsInput {
@@ -1435,7 +1434,7 @@ declare module 'fullcalendar/src/types/input-types' {
 	    month?: string;
 	    week?: string;
 	    day?: string;
-	    [viewId: string]: string | undefined;
+	    [viewId: string]: string;
 	}
 	export interface BusinessHoursInput {
 	    start?: MomentInput;
@@ -1467,10 +1466,9 @@ declare module 'fullcalendar/src/types/input-types' {
 	        [name: string]: CustomButtonInput;
 	    };
 	    buttonIcons?: boolean | ButtonIconsInput;
-	    themeSystem?: 'standard' | 'bootstrap3' | 'bootstrap4' | 'jquery-ui';
+	    themeSystem?: 'standard' | 'bootstrap3' | 'jquery-ui';
 	    themeButtonIcons?: boolean | ButtonIconsInput;
 	    bootstrapGlyphicons?: boolean | ButtonIconsInput;
-	    bootstrapFontAwesome?: boolean | ButtonIconsInput;
 	    firstDay?: number;
 	    isRTL?: boolean;
 	    weekends?: boolean;
@@ -1514,10 +1512,7 @@ declare module 'fullcalendar/src/types/input-types' {
 	    dayCount?: number;
 	    locale?: string;
 	    timeFormat?: string;
-	    columnHeader?: boolean;
-	    columnHeaderFormat?: string;
-	    columnHeaderText?: string | ((date: MomentInput) => string);
-	    columnHeaderHtml?: string | ((date: MomentInput) => string);
+	    columnFormat?: string;
 	    titleFormat?: string;
 	    monthNames?: string[];
 	    monthNamesShort?: string[];
@@ -2460,7 +2455,7 @@ declare module 'fullcalendar/ListView' {
 declare module 'fullcalendar/src/exports' {
 	export const version = "<%= version %>";
 	export const internalApiVersion = 12;
-	export { BusinessHoursInput, EventObjectInput, EventOptionsBase, OptionsInput } from 'fullcalendar/src/types/input-types';
+	export { EventObjectInput, BusinessHoursInput, EventOptionsBase } from 'fullcalendar/src/types/input-types';
 	export { applyAll, debounce, isInt, htmlEscape, cssToStr, proxy, capitaliseFirstLetter, getOuterRect, getClientRect, getContentRect, getScrollbarWidths, preventDefault, parseFieldSpecs, compareByFieldSpecs, compareByFieldSpec, flexibleCompare, computeGreatestUnit, divideRangeByDuration, divideDurationByDuration, multiplyDuration, durationHasTime, log, warn, removeExact, intersectRects } from 'fullcalendar/src/util';
 	export { formatDate, formatRange, queryMostGranularFormatUnit } from 'fullcalendar/src/date-formatting';
 	export { datepickerLocale, locale } from 'fullcalendar/src/locale';
@@ -2514,32 +2509,11 @@ declare module 'fullcalendar/src/exports' {
 	export { default as MonthView } from 'fullcalendar/MonthView';
 	export { default as ListView } from 'fullcalendar/ListView';
 }
-declare module 'fullcalendar/src/models/event-source/config' {
-	export {};
-}
-declare module 'fullcalendar/Bootstrap3Theme' {
+declare module 'fullcalendar/BootstrapTheme' {
 	import Theme from 'fullcalendar/Theme';
 	export class Default extends Theme {
 	}
 	export default Default;
-}
-declare module 'fullcalendar/Bootstrap4Theme' {
-	import Theme from 'fullcalendar/Theme';
-	export class Default extends Theme {
-	}
-	export default Default;
-}
-declare module 'fullcalendar/src/theme/config' {
-	export {};
-}
-declare module 'fullcalendar/src/basic/config' {
-	export {};
-}
-declare module 'fullcalendar/src/agenda/config' {
-	export {};
-}
-declare module 'fullcalendar/src/list/config' {
-	export {};
 }
 declare module 'fullcalendar/src/types/jquery-hooks' {
 	import * as moment from 'moment';
@@ -2557,7 +2531,7 @@ declare module 'fullcalendar/src/types/jquery-hooks' {
 	        fullCalendar(method: 'destroy'): JQuery;
 	        fullCalendar(method: 'option', name: string | object, value?: any): any;
 	        fullCalendar(method: 'isValidViewType', viewType: string): boolean;
-	        fullCalendar(method: 'changeView', viewName: string, dateOrRange?: RangeInput | MomentInput): JQuery;
+	        fullCalendar(method: 'changeView', viewName: string, dateOrRange: RangeInput | MomentInput): JQuery;
 	        fullCalendar(method: 'zoomTo', newDate: moment.Moment, viewType?: string): JQuery;
 	        fullCalendar(method: 'prev'): JQuery;
 	        fullCalendar(method: 'next'): JQuery;
@@ -2576,7 +2550,7 @@ declare module 'fullcalendar/src/types/jquery-hooks' {
 	        fullCalendar(method: 'refetchEvents'): JQuery;
 	        fullCalendar(method: 'renderEvents', eventInputs: EventObjectInput[], isSticky?: boolean): JQuery;
 	        fullCalendar(method: 'renderEvent', eventInput: EventObjectInput, isSticky?: boolean): JQuery;
-	        fullCalendar(method: 'removeEvents', legacyQuery?: any): JQuery;
+	        fullCalendar(method: 'removeEvents', legacyQuery: any): JQuery;
 	        fullCalendar(method: 'clientEvents', legacyQuery: any): any;
 	        fullCalendar(method: 'updateEvents', eventPropsArray: EventObjectInput[]): JQuery;
 	        fullCalendar(method: 'updateEvent', eventProps: EventObjectInput): JQuery;
@@ -2630,9 +2604,6 @@ declare module 'fullcalendar/plugins/gcal/GcalEventSource' {
 	    applyMiscProps(rawProps: any): void;
 	}
 	export default Default;
-}
-declare module 'fullcalendar/plugins/gcal/main' {
-	export {};
 }
 declare module 'fullcalendar' {
 	import main = require('fullcalendar/src/main');

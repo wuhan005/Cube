@@ -1,6 +1,6 @@
 // Starsoft Mongolia LLC Temuujin Ariunbold
 
-(function($) {
+(function ($) {
   $.extend($.summernote.lang, {
     'mn-MN': {
       font: {
@@ -29,13 +29,11 @@
         shapeThumbnail: 'Хүрээ: Хураангуй',
         shapeNone: 'Хүрээгүй',
         dragImageHere: 'Зургийг энд чирч авчирна уу',
-        dropImage: 'Drop image or Text',
         selectFromFiles: 'Файлуудаас сонгоно уу',
         maximumFileSize: 'Файлын дээд хэмжээ',
         maximumFileSizeError: 'Файлын дээд хэмжээ хэтэрсэн',
         url: 'Зургийн URL',
-        remove: 'Зургийг устгах',
-        original: 'Original'
+        remove: 'Зургийг устгах'
       },
       video: {
         video: 'Видео',
@@ -54,14 +52,7 @@
         openInNewWindow: 'Шинэ цонхонд нээх'
       },
       table: {
-        table: 'Хүснэгт',
-        addRowAbove: 'Add row above',
-        addRowBelow: 'Add row below',
-        addColLeft: 'Add column left',
-        addColRight: 'Add column right',
-        delRow: 'Delete row',
-        delCol: 'Delete column',
-        delTable: 'Delete table'
+        table: 'Хүснэгт'
       },
       hr: {
         insert: 'Хэвтээ шугам оруулах'
@@ -112,37 +103,7 @@
         textFormatting: 'Бичвэрийг хэлбэржүүлэх',
         action: 'Үйлдэл',
         paragraphFormatting: 'Догол мөрийг хэлбэржүүлэх',
-        documentStyle: 'Бичиг баримтын хэв загвар',
-        extraKeys: 'Extra keys'
-      },
-      help: {
-        'insertParagraph': 'Insert Paragraph',
-        'undo': 'Undoes the last command',
-        'redo': 'Redoes the last command',
-        'tab': 'Tab',
-        'untab': 'Untab',
-        'bold': 'Set a bold style',
-        'italic': 'Set a italic style',
-        'underline': 'Set a underline style',
-        'strikethrough': 'Set a strikethrough style',
-        'removeFormat': 'Clean a style',
-        'justifyLeft': 'Set left align',
-        'justifyCenter': 'Set center align',
-        'justifyRight': 'Set right align',
-        'justifyFull': 'Set full align',
-        'insertUnorderedList': 'Toggle unordered list',
-        'insertOrderedList': 'Toggle ordered list',
-        'outdent': 'Outdent on current paragraph',
-        'indent': 'Indent on current paragraph',
-        'formatPara': 'Change current block\'s format as a paragraph(P tag)',
-        'formatH1': 'Change current block\'s format as H1',
-        'formatH2': 'Change current block\'s format as H2',
-        'formatH3': 'Change current block\'s format as H3',
-        'formatH4': 'Change current block\'s format as H4',
-        'formatH5': 'Change current block\'s format as H5',
-        'formatH6': 'Change current block\'s format as H6',
-        'insertHorizontalRule': 'Insert horizontal rule',
-        'linkDialog.show': 'Show Link Dialog'
+        documentStyle: 'Бичиг баримтын хэв загвар'
       },
       history: {
         undo: 'Буцаах',

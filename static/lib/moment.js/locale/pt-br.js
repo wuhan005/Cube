@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Portuguese (Brazil) [pt-br]
+//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -37,7 +39,7 @@ var ptBr = moment.defineLocale('pt-br', {
     },
     relativeTime : {
         future : 'em %s',
-        past : 'há %s',
+        past : '%s atrás',
         s : 'poucos segundos',
         ss : '%d segundos',
         m : 'um minuto',

@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Portuguese [pt]
+//! author : Jefferson : https://github.com/jalex79
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -39,7 +41,6 @@ var pt = moment.defineLocale('pt', {
         future : 'em %s',
         past : 'há %s',
         s : 'segundos',
-        ss : '%d segundos',
         m : 'um minuto',
         mm : '%d minutos',
         h : 'uma hora',

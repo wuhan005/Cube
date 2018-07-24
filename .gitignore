@@ -1,2 +1,4 @@
 Cube.code-workspace
 phpinfo.php
+.DS_Store
+.vscode

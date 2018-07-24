@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Polish [pl]
+//! author : Rafal Hirsz : https://github.com/evoL
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -8,16 +10,14 @@
 }(this, (function (moment) { 'use strict';
 
 
-var monthsNominative = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split('_'),
-    monthsSubjective = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split('_');
+var monthsNominative = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split('_');
+var monthsSubjective = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split('_');
 function plural(n) {
     return (n % 10 < 5) && (n % 10 > 1) && ((~~(n / 10) % 10) !== 1);
 }
 function translate(number, withoutSuffix, key) {
     var result = number + ' ';
     switch (key) {
-        case 'ss':
-            return result + (plural(number) ? 'sekundy' : 'sekund');
         case 'm':
             return withoutSuffix ? 'minuta' : 'minutę';
         case 'mm':
@@ -100,7 +100,6 @@ var pl = moment.defineLocale('pl', {
         future : 'za %s',
         past : '%s temu',
         s : 'kilka sekund',
-        ss : translate,
         m : translate,
         mm : translate,
         h : translate,

@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   $.extend($.summernote.lang, {
     'es-ES': {
       font: {
@@ -32,8 +32,7 @@
         maximumFileSize: 'Tamaño máximo del archivo',
         maximumFileSizeError: 'Has superado el tamaño máximo del archivo.',
         url: 'URL de la imagen',
-        remove: 'Eliminar imagen',
-        original: 'Original'
+        remove: 'Eliminar imagen'
       },
       video: {
         video: 'Vídeo',
@@ -52,14 +51,7 @@
         openInNewWindow: 'Abrir en una nueva ventana'
       },
       table: {
-        table: 'Tabla',
-        addRowAbove: 'Añadir fila encima',
-        addRowBelow: 'Añadir fila debajo',
-        addColLeft: 'Añadir columna izquierda',
-        addColRight: 'Añadir columna derecha',
-        delRow: 'Borrar fila',
-        delCol: 'Eliminar columna',
-        delTable: 'Eliminar tabla'
+        table: 'Tabla'
       },
       hr: {
         insert: 'Insertar línea horizontal'
@@ -113,7 +105,7 @@
         documentStyle: 'Estilo de documento',
         extraKeys: 'Teclas adicionales'
       },
-      help: {
+      help : {
         'insertParagraph': 'Insertar párrafo',
         'undo': 'Deshacer última acción',
         'redo': 'Rehacer última acción',

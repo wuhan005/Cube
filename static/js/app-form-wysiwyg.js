@@ -1,3 +1,10 @@
+/*!
+ * Beagle v1.5.0
+ * https://foxythemes.net
+ *
+ * Copyright (c) 2018 Foxy Themes
+ */
+
 var App = (function () {
 	'use strict';
 

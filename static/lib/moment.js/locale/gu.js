@@ -1,4 +1,6 @@
 //! moment.js locale configuration
+//! locale : Gujarati [gu]
+//! author : Kaushik Thanki : https://github.com/Kaushik1987
 
 ;(function (global, factory) {
    typeof exports === 'object' && typeof module !== 'undefined'
@@ -19,8 +21,8 @@ var symbolMap = {
         '8': '૮',
         '9': '૯',
         '0': '૦'
-    },
-    numberMap = {
+    };
+var numberMap = {
         '૧': '1',
         '૨': '2',
         '૩': '3',
@@ -60,7 +62,6 @@ var gu = moment.defineLocale('gu', {
         future: '%s મા',
         past: '%s પેહલા',
         s: 'અમુક પળો',
-        ss: '%d સેકંડ',
         m: 'એક મિનિટ',
         mm: '%d મિનિટ',
         h: 'એક કલાક',

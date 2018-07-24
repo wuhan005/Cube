@@ -132,7 +132,7 @@
       cm.off("change", abort)
       if (state.waitingFor != id) return
       if (arg2 && annotations instanceof CodeMirror) annotations = arg2
-      cm.operation(function() {updateLinting(cm, annotations)})
+      updateLinting(cm, annotations)
     }, passOptions, cm);
   }
 
@@ -151,9 +151,9 @@
       var annotations = getAnnotations(cm.getValue(), passOptions, cm);
       if (!annotations) return;
       if (annotations.then) annotations.then(function(issues) {
-        cm.operation(function() {updateLinting(cm, issues)})
+        updateLinting(cm, issues);
       });
-      else cm.operation(function() {updateLinting(cm, annotations)})
+      else updateLinting(cm, annotations);
     }
   }
 

@@ -156,14 +156,8 @@
     var ranges = cm.listSelections(), newRanges = [];
     for (var i = 0; i < ranges.length; i++) {
       var range = ranges[i];
-      var newAnchor = cm.findPosV(
-          range.anchor, dir, "line", range.anchor.goalColumn);
-      var newHead = cm.findPosV(
-          range.head, dir, "line", range.head.goalColumn);
-      newAnchor.goalColumn = range.anchor.goalColumn != null ?
-          range.anchor.goalColumn : cm.cursorCoords(range.anchor, "div").left;
-      newHead.goalColumn = range.head.goalColumn != null ?
-          range.head.goalColumn : cm.cursorCoords(range.head, "div").left;
+      var newAnchor = cm.findPosV(range.anchor, dir, "line");
+      var newHead = cm.findPosV(range.head, dir, "line");
       var newRange = {anchor: newAnchor, head: newHead};
       newRanges.push(range);
       newRanges.push(newRange);
@@ -189,15 +183,9 @@
         var closing = cm.scanForBracket(pos, 1);
         if (!closing) return false;
         if (closing.ch == mirror.charAt(mirror.indexOf(opening.ch) + 1)) {
-          var startPos = Pos(opening.pos.line, opening.pos.ch + 1);
-          if (CodeMirror.cmpPos(startPos, range.from()) == 0 &&
-              CodeMirror.cmpPos(closing.pos, range.to()) == 0) {
-            opening = cm.scanForBracket(opening.pos, -1);
-            if (!opening) return false;
-          } else {
-            newRanges.push({anchor: startPos, head: closing.pos});
-            break;
-          }
+          newRanges.push({anchor: Pos(opening.pos.line, opening.pos.ch + 1),
+                          head: closing.pos});
+          break;
         }
         pos = Pos(closing.pos.line, closing.pos.ch + 1);
       }
@@ -388,7 +376,7 @@
     var marks = cm.state.sublimeBookmarks || (cm.state.sublimeBookmarks = []);
     for (var i = 0; i < ranges.length; i++) {
       var from = ranges[i].from(), to = ranges[i].to();
-      var found = ranges[i].empty() ? cm.findMarksAt(from) : cm.findMarks(from, to);
+      var found = cm.findMarks(from, to);
       for (var j = 0; j < found.length; j++) {
         if (found[j].sublimeBookmark) {
           found[j].clear();
@@ -520,6 +508,27 @@
     cm.scrollTo(null, (pos.top + pos.bottom) / 2 - cm.getScrollInfo().clientHeight / 2);
   };
 
+  cmds.selectLinesUpward = function(cm) {
+    cm.operation(function() {
+      var ranges = cm.listSelections();
+      for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        if (range.head.line > cm.firstLine())
+          cm.addSelection(Pos(range.head.line - 1, range.head.ch));
+      }
+    });
+  };
+  cmds.selectLinesDownward = function(cm) {
+    cm.operation(function() {
+      var ranges = cm.listSelections();
+      for (var i = 0; i < ranges.length; i++) {
+        var range = ranges[i];
+        if (range.head.line < cm.lastLine())
+          cm.addSelection(Pos(range.head.line + 1, range.head.ch));
+      }
+    });
+  };
+
   function getTarget(cm) {
     var from = cm.getCursor("from"), to = cm.getCursor("to");
     if (CodeMirror.cmpPos(from, to) == 0) {
@@ -581,6 +590,8 @@
     "Cmd-Enter": "insertLineAfter",
     "Shift-Cmd-Enter": "insertLineBefore",
     "Cmd-D": "selectNextOccurrence",
+    "Shift-Cmd-Up": "addCursorToPrevLine",
+    "Shift-Cmd-Down": "addCursorToNextLine",
     "Shift-Cmd-Space": "selectScope",
     "Shift-Cmd-M": "selectBetweenBrackets",
     "Cmd-M": "goToBracket",
@@ -610,8 +621,8 @@
     "Cmd-K Cmd-Backspace": "delLineLeft",
     "Cmd-K Cmd-0": "unfoldAll",
     "Cmd-K Cmd-J": "unfoldAll",
-    "Ctrl-Shift-Up": "addCursorToPrevLine",
-    "Ctrl-Shift-Down": "addCursorToNextLine",
+    "Ctrl-Shift-Up": "selectLinesUpward",
+    "Ctrl-Shift-Down": "selectLinesDownward",
     "Cmd-F3": "findUnder",
     "Shift-Cmd-F3": "findUnderPrevious",
     "Alt-F3": "findAllUnder",
@@ -641,6 +652,8 @@
     "Ctrl-Enter": "insertLineAfter",
     "Shift-Ctrl-Enter": "insertLineBefore",
     "Ctrl-D": "selectNextOccurrence",
+    "Alt-CtrlUp": "addCursorToPrevLine",
+    "Alt-CtrlDown": "addCursorToNextLine",
     "Shift-Ctrl-Space": "selectScope",
     "Shift-Ctrl-M": "selectBetweenBrackets",
     "Ctrl-M": "goToBracket",
@@ -670,8 +683,8 @@
     "Ctrl-K Ctrl-Backspace": "delLineLeft",
     "Ctrl-K Ctrl-0": "unfoldAll",
     "Ctrl-K Ctrl-J": "unfoldAll",
-    "Ctrl-Alt-Up": "addCursorToPrevLine",
-    "Ctrl-Alt-Down": "addCursorToNextLine",
+    "Ctrl-Alt-Up": "selectLinesUpward",
+    "Ctrl-Alt-Down": "selectLinesDownward",
     "Ctrl-F3": "findUnder",
     "Shift-Ctrl-F3": "findUnderPrevious",
     "Alt-F3": "findAllUnder",

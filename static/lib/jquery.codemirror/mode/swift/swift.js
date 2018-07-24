@@ -138,17 +138,8 @@
   }
 
   function tokenComment(stream, state) {
-    var ch
-    while (true) {
-      stream.match(/^[^/*]+/, true)
-      ch = stream.next()
-      if (!ch) break
-      if (ch === "/" && stream.eat("*")) {
-        state.tokenize.push(tokenComment)
-      } else if (ch === "*" && stream.eat("/")) {
-        state.tokenize.pop()
-      }
-    }
+    stream.match(/^(?:[^*]|\*(?!\/))*/)
+    if (stream.match("*/")) state.tokenize.pop()
     return "comment"
   }
 

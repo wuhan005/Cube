@@ -1,41 +1,38 @@
 {
   "_args": [
     [
-      "codemirror@5.35.0",
-      "C:\\dev\\control\\beagle"
+      "codemirror@5.32.0",
+      "/home/miguel/projects/beagle"
     ]
   ],
-  "_from": "codemirror@5.35.0",
-  "_id": "codemirror@5.35.0",
+  "_from": "codemirror@5.32.0",
+  "_id": "codemirror@5.32.0",
   "_inBundle": false,
-  "_integrity": "sha512-8HQICjZlDfe1ai7bvU6m2uHxuZuFgsUCdDRU9OHVB+2RTRd+FftN1ezVCqbquG0Fyq+wETqyadKhUX46DswSUQ==",
+  "_integrity": "sha512-95OxAlYiigW0g4n4ixFdavG07clJGILp3MvHh2pKR3FvyrTuHHvqtKSVbrV3/Jz6o0YqGvyCDLDTbH4h6ciaSw==",
   "_location": "/codemirror",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "codemirror@5.35.0",
+    "raw": "codemirror@5.32.0",
     "name": "codemirror",
     "escapedName": "codemirror",
-    "rawSpec": "5.35.0",
+    "rawSpec": "5.32.0",
     "saveSpec": null,
-    "fetchSpec": "5.35.0"
+    "fetchSpec": "5.32.0"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/codemirror/-/codemirror-5.35.0.tgz",
-  "_spec": "5.35.0",
-  "_where": "C:\\dev\\control\\beagle",
+  "_resolved": "https://registry.npmjs.org/codemirror/-/codemirror-5.32.0.tgz",
+  "_spec": "5.32.0",
+  "_where": "/home/miguel/projects/beagle",
   "bugs": {
     "url": "http://github.com/codemirror/CodeMirror/issues"
   },
   "contributors": [
     {
       "name": "List of CodeMirror contributors. Updated before every release."
-    },
-    {
-      "name": "4oo4"
     },
     {
       "name": "4r2r"
@@ -362,9 +359,6 @@
       "name": "Brandon Wamboldt"
     },
     {
-      "name": "Bret Little"
-    },
-    {
       "name": "Brett Zamir"
     },
     {
@@ -471,9 +465,6 @@
     },
     {
       "name": "ComFreek"
-    },
-    {
-      "name": "Cristian Prieto"
     },
     {
       "name": "Curtis Gagliardi"
@@ -677,9 +668,6 @@
       "name": "Filip Stollár"
     },
     {
-      "name": "Filype Pereira"
-    },
-    {
       "name": "flack"
     },
     {
@@ -812,9 +800,6 @@
       "name": "Hector Oswaldo Caballero"
     },
     {
-      "name": "Hélio"
-    },
-    {
       "name": "Hendrik Wallbaum"
     },
     {
@@ -843,9 +828,6 @@
     },
     {
       "name": "Ian Dickinson"
-    },
-    {
-      "name": "Ian Rose"
     },
     {
       "name": "Ian Wehrman"
@@ -1209,12 +1191,6 @@
       "name": "Libo Cannici"
     },
     {
-      "name": "Lior Goldberg"
-    },
-    {
-      "name": "Lior Shub"
-    },
-    {
       "name": "LloydMilligan"
     },
     {
@@ -1410,9 +1386,6 @@
       "name": "melpon"
     },
     {
-      "name": "meshuamam"
-    },
-    {
       "name": "Metatheos"
     },
     {
@@ -1444,9 +1417,6 @@
     },
     {
       "name": "Michal Dorner"
-    },
-    {
-      "name": "Michal Kapiczynski"
     },
     {
       "name": "Mighty Guava"
@@ -1521,12 +1491,6 @@
       "name": "ndr"
     },
     {
-      "name": "Neil Anderson"
-    },
-    {
-      "name": "neon-dev"
-    },
-    {
       "name": "nerbert"
     },
     {
@@ -1550,9 +1514,6 @@
     {
       "name": "Nicholas Bollweg",
       "url": "Nick"
-    },
-    {
-      "name": "NickKolok"
     },
     {
       "name": "Nick Kreeger"
@@ -1604,9 +1565,6 @@
     },
     {
       "name": "Oskar Segersvärd"
-    },
-    {
-      "name": "overdodactyl"
     },
     {
       "name": "pablo"
@@ -1709,12 +1667,6 @@
     },
     {
       "name": "Prayag Verma"
-    },
-    {
-      "name": "Prendota"
-    },
-    {
-      "name": "Qiang Li"
     },
     {
       "name": "Radek Piórkowski"
@@ -1870,9 +1822,6 @@
       "name": "Se-Won Kim"
     },
     {
-      "name": "Shane Liesegang"
-    },
-    {
       "name": "shaund"
     },
     {
@@ -1921,9 +1870,6 @@
       "name": "sonson"
     },
     {
-      "name": "Sorab Bisht"
-    },
-    {
       "name": "spastorelli"
     },
     {
@@ -1946,9 +1892,6 @@
     },
     {
       "name": "Steffen Kowalski"
-    },
-    {
-      "name": "Stephane Moore"
     },
     {
       "name": "Stephen Lavelle"
@@ -2047,9 +1990,6 @@
       "name": "Timothy Hatcher"
     },
     {
-      "name": "Tobias Bertelsen"
-    },
-    {
       "name": "TobiasBg"
     },
     {
@@ -2077,12 +2017,6 @@
       "name": "Tony Jian"
     },
     {
-      "name": "tophf"
-    },
-    {
-      "name": "totalamd"
-    },
-    {
       "name": "Travis Heppe"
     },
     {
@@ -2099,9 +2033,6 @@
     },
     {
       "name": "Tyler Long"
-    },
-    {
-      "name": "Vaibhav Sagar"
     },
     {
       "name": "VapidWorx"
@@ -2245,5 +2176,5 @@
     "watch": "rollup -w -c"
   },
   "style": "lib/codemirror.css",
-  "version": "5.35.0"
+  "version": "5.32.0"
 }

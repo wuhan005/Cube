@@ -1,3 +1,10 @@
+/*!
+ * Beagle v1.5.0
+ * https://foxythemes.net
+ *
+ * Copyright (c) 2018 Foxy Themes
+ */
+
 .cm-s-cobalt.CodeMirror { background: #002240; color: white; }
 .cm-s-cobalt div.CodeMirror-selected { background: #b36539; }
 .cm-s-cobalt .CodeMirror-line::selection, .cm-s-cobalt .CodeMirror-line > span::selection, .cm-s-cobalt .CodeMirror-line > span > span::selection { background: rgba(179, 101, 57, .99); }

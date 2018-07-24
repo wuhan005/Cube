@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   $.extend($.summernote.lang, {
     'pl-PL': {
       font: {
@@ -9,8 +9,6 @@
         height: 'Interlinia',
         name: 'Czcionka',
         strikethrough: 'Przekreślenie',
-        subscript: 'Indeks dolny',
-        superscript: 'Indeks górny',
         size: 'Rozmiar'
       },
       image: {
@@ -32,8 +30,7 @@
         maximumFileSize: 'Limit wielkości pliku',
         maximumFileSizeError: 'Przekroczono limit wielkości pliku.',
         url: 'Adres URL grafiki',
-        remove: 'Usuń grafikę',
-        original: 'Original'
+        remove: 'Usuń grafikę'
       },
       video: {
         video: 'Wideo',
@@ -52,14 +49,7 @@
         openInNewWindow: 'Otwórz w nowym oknie'
       },
       table: {
-        table: 'Tabela',
-        addRowAbove: 'Add row above',
-        addRowBelow: 'Add row below',
-        addColLeft: 'Add column left',
-        addColRight: 'Add column right',
-        delRow: 'Delete row',
-        delCol: 'Delete column',
-        delTable: 'Delete table'
+        table: 'Tabela'
       },
       hr: {
         insert: 'Wstaw poziomą linię'
@@ -113,42 +103,9 @@
         documentStyle: 'Styl dokumentu',
         extraKeys: 'Dodatkowe klawisze'
       },
-      help: {
-        'insertParagraph': 'Insert Paragraph',
-        'undo': 'Undoes the last command',
-        'redo': 'Redoes the last command',
-        'tab': 'Tab',
-        'untab': 'Untab',
-        'bold': 'Set a bold style',
-        'italic': 'Set a italic style',
-        'underline': 'Set a underline style',
-        'strikethrough': 'Set a strikethrough style',
-        'removeFormat': 'Clean a style',
-        'justifyLeft': 'Set left align',
-        'justifyCenter': 'Set center align',
-        'justifyRight': 'Set right align',
-        'justifyFull': 'Set full align',
-        'insertUnorderedList': 'Toggle unordered list',
-        'insertOrderedList': 'Toggle ordered list',
-        'outdent': 'Outdent on current paragraph',
-        'indent': 'Indent on current paragraph',
-        'formatPara': 'Change current block\'s format as a paragraph(P tag)',
-        'formatH1': 'Change current block\'s format as H1',
-        'formatH2': 'Change current block\'s format as H2',
-        'formatH3': 'Change current block\'s format as H3',
-        'formatH4': 'Change current block\'s format as H4',
-        'formatH5': 'Change current block\'s format as H5',
-        'formatH6': 'Change current block\'s format as H6',
-        'insertHorizontalRule': 'Insert horizontal rule',
-        'linkDialog.show': 'Show Link Dialog'
-      },
       history: {
         undo: 'Cofnij',
         redo: 'Ponów'
-      },
-      specialChar: {
-        specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
       }
     }
   });

@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   $.extend($.summernote.lang, {
     'vi-VN': {
       font: {
@@ -9,8 +9,6 @@
         height: 'Chiều cao dòng',
         name: 'Phông chữ',
         strikethrough: 'Gạch ngang',
-        subscript: 'Subscript',
-        superscript: 'Superscript',
         size: 'Cỡ chữ'
       },
       image: {
@@ -22,18 +20,10 @@
         floatLeft: 'Trôi về trái',
         floatRight: 'Trôi về phải',
         floatNone: 'Không trôi',
-        shapeRounded: 'Shape: Rounded',
-        shapeCircle: 'Shape: Circle',
-        shapeThumbnail: 'Shape: Thumbnail',
-        shapeNone: 'Shape: None',
         dragImageHere: 'Thả Ảnh ở vùng này',
-        dropImage: 'Drop image or Text',
         selectFromFiles: 'Chọn từ File',
-        maximumFileSize: 'Maximum file size',
-        maximumFileSizeError: 'Maximum file size exceeded.',
         url: 'URL',
-        remove: 'Xóa',
-        original: 'Original'
+        remove: 'Xóa'
       },
       video: {
         video: 'Video',
@@ -52,14 +42,7 @@
         openInNewWindow: 'Mở ở Cửa sổ mới'
       },
       table: {
-        table: 'Bảng',
-        addRowAbove: 'Add row above',
-        addRowBelow: 'Add row below',
-        addColLeft: 'Add column left',
-        addColRight: 'Add column right',
-        delRow: 'Delete row',
-        delCol: 'Delete column',
-        delTable: 'Delete table'
+        table: 'Bảng'
       },
       hr: {
         insert: 'Chèn'
@@ -110,45 +93,11 @@
         textFormatting: 'Định dạng Văn bản',
         action: 'Hành động',
         paragraphFormatting: 'Định dạng',
-        documentStyle: 'Kiểu văn bản',
-        extraKeys: 'Extra keys'
-      },
-      help: {
-        'insertParagraph': 'Insert Paragraph',
-        'undo': 'Undoes the last command',
-        'redo': 'Redoes the last command',
-        'tab': 'Tab',
-        'untab': 'Untab',
-        'bold': 'Set a bold style',
-        'italic': 'Set a italic style',
-        'underline': 'Set a underline style',
-        'strikethrough': 'Set a strikethrough style',
-        'removeFormat': 'Clean a style',
-        'justifyLeft': 'Set left align',
-        'justifyCenter': 'Set center align',
-        'justifyRight': 'Set right align',
-        'justifyFull': 'Set full align',
-        'insertUnorderedList': 'Toggle unordered list',
-        'insertOrderedList': 'Toggle ordered list',
-        'outdent': 'Outdent on current paragraph',
-        'indent': 'Indent on current paragraph',
-        'formatPara': 'Change current block\'s format as a paragraph(P tag)',
-        'formatH1': 'Change current block\'s format as H1',
-        'formatH2': 'Change current block\'s format as H2',
-        'formatH3': 'Change current block\'s format as H3',
-        'formatH4': 'Change current block\'s format as H4',
-        'formatH5': 'Change current block\'s format as H5',
-        'formatH6': 'Change current block\'s format as H6',
-        'insertHorizontalRule': 'Insert horizontal rule',
-        'linkDialog.show': 'Show Link Dialog'
+        documentStyle: 'Kiểu văn bản'
       },
       history: {
         undo: 'Lùi lại',
         redo: 'Làm lại'
-      },
-      specialChar: {
-        specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
       }
     }
   });

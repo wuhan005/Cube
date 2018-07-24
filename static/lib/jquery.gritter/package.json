@@ -2,7 +2,6 @@
   "_from": "git+https://github.com/foxythemes/Gritter.git#master",
   "_id": "Gritter@1.7.4",
   "_inBundle": false,
-  "_integrity": "sha1-OLV+xT9F8dnTHi9Pb4RjwnsKfWw=",
   "_location": "/Gritter",
   "_phantomChildren": {},
   "_requested": {
@@ -20,7 +19,7 @@
   ],
   "_resolved": "git+https://github.com/foxythemes/Gritter.git#22fd3938317fa2bf1cc25528c9ae1c3af28f4b90",
   "_spec": "Gritter@git+https://github.com/foxythemes/Gritter.git#master",
-  "_where": "C:\\dev\\control\\beagle",
+  "_where": "/home/miguel/projects/beagle",
   "bugs": {
     "url": "https://github.com/jboesch/Gritter/issues"
   },
