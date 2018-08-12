@@ -9,6 +9,7 @@ Version: 1.0.0
 
 require_once('core/ModuleFinder.php');
 require_once('core/ModuleLoader.php');
+require_once('core/File.php');
 
 $mFinder = new ModuleFinder();
 $moduleList = $mFinder->getModuleList();
@@ -32,8 +33,10 @@ function startModule(){
     global $db;
     if(isset($_GET['moduleName'])){
         $db->startModule($_GET['moduleName']);
+        alert('success','成功！',$_GET['moduleName'] . ' 已启用。');
     }else{
         //Missing the module name, turn error.
+        alert('danger','警告！','缺少参数！');
     }
 }
 
@@ -41,8 +44,32 @@ function offModule(){
     global $db;
     if(isset($_GET['moduleName'])){
         $db->offModule($_GET['moduleName']);
+        alert('success','成功！',$_GET['moduleName'] . ' 已关闭。');
     }else{
         //Missing the module name, turn error.
+        alert('danger','警告！','缺少参数！');
+    }
+}
+
+function deleteModule($moduleName = ''){
+    global $db;
+    $onModuleList = $db->getOnModule();
+    if(isset($_GET['moduleName'])){
+        //Judge the module is off or not.
+        if(in_array($_GET['moduleName'], $onModuleList)){
+            alert('danger','警告！','检测到小工具 '. $_GET['moduleName'] .' 未关闭，请关闭后再删除。');
+        }else{
+            //Delete the moudle folder.
+            if(File::deleteModule($_GET['moduleName'])){
+                refresh();
+            }else{
+                //Delete Error.
+                //alert('danger','警告！','删除失败！');
+            }
+        }
+    }else{
+        //Missing the module name, turn error.
+        alert('danger','警告！','缺少参数！');
     }
 }
 
@@ -55,6 +82,9 @@ if(isset($_GET['action'])){
         break;
         case 'offModule':
         offModule();
+        break;
+        case 'deleteModule':
+        deleteModule();
         break;
     }
 }
@@ -75,8 +105,10 @@ function dropdown($PathName,$isStart){
     <td class="text-right">
     <div class="btn-group btn-hspace">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">' . $buttomLabel . '<span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-        <div class="dropdown-menu" role="menu"><a class="dropdown-item" href="' . $dropitemURL . '">' . $dropitemLabel . '</a>
-        <div class="dropdown-divider"></div><a class="dropdown-item" href="#">删除</a>
+        <div class="dropdown-menu" role="menu">
+        <a class="dropdown-item" href="?action=deleteModule&moduleName='. $PathName . '">删除</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="' . $dropitemURL . '">' . $dropitemLabel . '</a>
         </div>
     </div>
     </td>

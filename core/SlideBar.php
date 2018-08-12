@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../static/css/app.css" type="text/css"/>
     <script language='javascript'>
     function refresh(){
-        document.location = '?';
+        document.location = '';
     }
     </script>
   </head>

@@ -7,10 +7,11 @@
     <script src="../static/js/app.js" type="text/javascript"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-      	//initialize the javascript
+      	//-initialize the javascript
       	App.init();
+      	//-Runs prettify
+      	prettyPrint();
       });
-      
     </script>
   </body>
 </html>

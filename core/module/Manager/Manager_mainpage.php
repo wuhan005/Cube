@@ -25,35 +25,39 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach($moduleDetailList as $Item){
-                echo('
+            <?php foreach($moduleDetailList as $Item){?>
                 <tr>
                 <td>
                 <label class="custom-control custom-control-sm custom-checkbox">
                     <input class="custom-control-input" type="checkbox"><span class="custom-control-label"></span>
                 </label>
                 </td>
-                <td class="cell-detail"><span><i class="icon mdi mdi-');
-                //ICON
-                echo($Item['Icon']);echo('"></i>');
-                //NAME
-                echo($Item['Name']);echo('</span></td>');
-                echo('<td class="milestone"><span class="version">');
-                //VERSION
-                echo($Item['Version']);echo('</span></td>');
-                echo('<td class="cell-detail"><a href="'. $Item['AuthorURI'] .'" target=_blank> <span>');
-                //DEVELOPER
-                echo($Item['Author']);echo('</span>');
-                echo('<span class="cell-detail-description">');
-                //DEVELOPER URL
-                echo($Item['AuthorURI']);echo('</span></a></td>');
-                echo('<td class="cell-detail"><span>');
-                //DESCRIPTION
-                echo($Item['Description']);echo('</span></td>');
-                //Generate Dropdown UI.
-                dropdown($Item['PathName'],$Item['isStart']);
-            }
-            ?>
+                <td class="cell-detail">
+                    <span>
+                    <i class="icon mdi mdi-<?php echo($Item['Icon']);?>"></i><?php echo($Item['Name']);?>
+                    </span>
+                </td>
+                <td class="milestone">
+                    <span class="version">
+                    <?php echo($Item['Version']);?>
+                    </span>
+                </td>
+                <td class="cell-detail">
+                <a href="<?php $Item['AuthorURI']?>" target=_blank>
+                    <span>
+                    <?php echo($Item['Author']);?>
+                    </span>
+                    <span class="cell-detail-description">
+                    <?php echo($Item['AuthorURI']);?>
+                    </span>
+                </a>
+                </td>
+                <td class="cell-detail">
+                    <span>
+                <?php echo($Item['Description']);?>
+                    </span>
+                </td>
+                <?php dropdown($Item['PathName'],$Item['isStart']);}?>
             </tbody>
         </table>
         </div>
