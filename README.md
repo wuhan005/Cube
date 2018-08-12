@@ -2,7 +2,7 @@
 
 创造你想要的一切！ Create Everything You Like!
 
-##简介
+## 简介
 总有一些小工具、小应用，显得有那么点“高不成低不就”。比如 JSON 格式化，调用 API 获取音乐。
 
 
@@ -13,23 +13,22 @@
 ![Cube 首页](https://user-images.githubusercontent.com/12731778/44003672-2345d0dc-9e89-11e8-9212-d5d9075daf61.png)
 
 ![BRS 小工具](https://user-images.githubusercontent.com/12731778/44003655-dc9d1f96-9e88-11e8-903b-c3a826a390b4.png)
-<center>（自带的示例小工具——Hello B★RS）</center>
 
 ![小工具管理](https://user-images.githubusercontent.com/12731778/44003846-45801830-9e8c-11e8-8ce0-af8b04ff3201.png)
-<center>（小工具管理界面）</center>
 
-##启动
+## 启动
 Clone from Github
+
 `git clone git@github.com:wuhan005/Love-Bangumi.git`
 
-##TODO
+## TODO
 管理登录
 
 上传小工具压缩包并解压
 
 小工具数据库接口
 
-##模块介绍
+## 模块介绍
 ```
 .
 ├── LICENSE
@@ -74,8 +73,5 @@ Clone from Github
     ├── js
     └── lib
 ```
-##LICENSE
+## LICENSE
 MIT
-
-
-
