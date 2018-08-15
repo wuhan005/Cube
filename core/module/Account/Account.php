@@ -27,8 +27,10 @@ switch($nowPage){
     case 'LoginAction':
         loginAction();
     break;
+    case 'LogoutAction':
+        logoutAction();
+    break;
 }
-
 
 function loginAction(){
     global $db;
@@ -41,20 +43,24 @@ function loginAction(){
 
     if($realName == $nowName AND $realPasswd == $nowPasswd){
         //Set cookies, 1 hours.
-        setcookie('AccountName', $nowName, time()+3600);
-        setcookie('AccountPasswd', $nowPasswd, time()+3600);
+        setcookie('AccountName', $nowName, time()+3600, '/');
+        setcookie('AccountPasswd', $nowPasswd, time()+3600, '/');
 
-        redirect('http://www.cube.com/Account');
-        
+        redirect('/Account');
     }else{
         echo('false');
     }
 }
 
+function logoutAction(){
+    setcookie('AccountName', '', time()-3600, '/');
+    setcookie('AccountPasswd', '', time()-3600, '/');
+    redirect('/Account');
+}
+
 function isLogin(){
     global $db;
-
-
+    
     $nowName = $_COOKIE['AccountName'];
     $nowPasswd = $_COOKIE['AccountPasswd'];
 

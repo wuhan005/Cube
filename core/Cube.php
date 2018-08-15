@@ -18,6 +18,10 @@ require_once 'DataBase.php';
 $db = new DataBase;
 $db->Init();
 
+// Public Method
+require_once('Method.php');
+$mod = new Method;
+
 //Init the module.
 require_once 'core/ModuleLoader.php';
 $mLoader = new ModuleLoader;

@@ -31,21 +31,36 @@
           <div class="be-right-navbar">
             <ul class="nav navbar-nav float-right be-user-nav">
               <li class="nav-item dropdown">
-                  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                      <img src="../static/img/avatar.png" alt="Avatar">
-                      <span class="user-name">John Wu</span>
+                
+                <!--User Icon --> 
+                  <a href="/Account" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                      <img src="
+                    <?php 
+                      if($mod->get_current_login_user()['isLogin']){ 
+                        echo(Method::get_gravatar($mod->get_current_login_user()['mail'], 32)['pic']);
+                      }else{
+                        echo('/static/img/avatar.png');
+                      }
+                    ?>" alt="Avatar">
+                      <span class="user-name"><?php echo($mod->get_current_login_user()['name']);?></span>
                   </a>
                   
                 <div role="menu" class="dropdown-menu"> 
                 <!--User Info Box -->    
                   <div class="user-info">
-                    <div class="user-name">John Wu</div>
-                    <div class="user-position online">Available</div>
+                    <div class="user-name"><?php echo($mod->get_current_login_user()['name']);?></div>
+                    <div class="user-position <?php if($mod->get_current_login_user()['isLogin']){ echo('online'); }else{ echo('offline');}?>">
+                    <?php if($mod->get_current_login_user()['isLogin']){ echo('Available'); }else{ echo('Unavailable');}?>
+                    </div>
                   </div>
-                  <a href="pages-profile.html" class="dropdown-item">
-                      <span class="icon mdi mdi-face"></span> Account</a>
-                  <a href="pages-login.html" class="dropdown-item">
-                      <span class="icon mdi mdi-power"></span> Logout</a>
+                  <a href="/Account" class="dropdown-item">
+                      <span class="icon mdi mdi-face"></span> Account
+                  </a>
+                  <?php if($mod->get_current_login_user()['isLogin']){ ?>
+                  <a href="/Account/LogoutAction" class="dropdown-item">
+                      <span class="icon mdi mdi-power"></span> Logout
+                  </a>
+                  <?php } ?>
                 </div>
               </li>
             </ul>

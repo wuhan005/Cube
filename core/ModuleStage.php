@@ -4,9 +4,8 @@
     // Module Basic Data
     $Module = $this->module;    //Make it easy to ues.
 
-    // Public Method
-    require_once('Method.php');
-    $mod = new Method;
+    //Public method.
+    global $mod;
 
     // System Only Method
     if(isSystem){
