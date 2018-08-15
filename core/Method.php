@@ -17,6 +17,19 @@ class Method{
         $this->db();    //Init the database.
     }
 
+    //Remove the key in an array.
+    public static function remove_key($data, $key){
+        if(!array_key_exists($key, $data)){
+            return $data;
+        }
+        $keys = array_keys($data);
+        $index = array_search($key, $keys);
+        if($index !== FALSE){
+            array_splice($data, $index, 1);
+        }
+        return $data;
+    }
+
     //URL router.
     public function get_current_page(){
         $urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
@@ -30,6 +43,16 @@ class Method{
     //Get now date.
     public static function get_date(){
         return date('Y-m-d h:i:s',time());
+    }
+
+    public function isLogin(){ 
+        $nowName = @$_COOKIE['AccountName'];
+        $nowPasswd = @$_COOKIE['AccountPasswd'];
+    
+        $realName = $this->db->getAccountData()['Account_Name'];
+        $realPasswd = $this->db->getAccountData()['Account_Password'];
+    
+        return ($realName == $nowName AND $realPasswd == $nowPasswd);
     }
 
     //Current user data, return isLogin, name, mail.

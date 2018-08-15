@@ -76,44 +76,51 @@ function deleteModule($moduleName = ''){
 //ACTIONS HERE.
 //Judge if there is an action parameter.
 if(isset($_GET['action'])){
-    switch($_GET['action']){
-        case 'startModule':
-        startModule();
-        break;
-        case 'offModule':
-        offModule();
-        break;
-        case 'deleteModule':
-        deleteModule();
-        break;
+    global $mod;
+    //Judge the user is log in or not.
+    if($mod->isLogin()){
+        switch($_GET['action']){
+            case 'startModule':
+            startModule();
+            break;
+            case 'offModule':
+            offModule();
+            break;
+            case 'deleteModule':
+            deleteModule();
+            break;
+        }
+    }else{
+        redirect('/Manager');
     }
 }
 
 function dropdown($PathName,$isStart){
-    //Judge the UI.
-    if($isStart){
-        $buttomLabel = '启用';
-        $dropitemLabel = '关闭';
-        $dropitemURL = '?action=offModule&moduleName=' . $PathName;
-    }else{
-        $buttomLabel = '关闭';
-        $dropitemLabel = '启用';
-        $dropitemURL = '?action=startModule&moduleName=' . $PathName;
-    }
-    
-    echo('
-    <td class="text-right">
-    <div class="btn-group btn-hspace">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">' . $buttomLabel . '<span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-        <div class="dropdown-menu" role="menu">
-        <a class="dropdown-item" href="?action=deleteModule&moduleName='. $PathName . '">删除</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="' . $dropitemURL . '">' . $dropitemLabel . '</a>
+    global $mod;
+    //Judge the user is log in or not.
+    if($mod->isLogin()){
+        //Judge the UI.
+        if($isStart){
+            $buttomLabel = '启用';
+            $dropitemLabel = '关闭';
+            $dropitemURL = '?action=offModule&moduleName=' . $PathName;
+        }else{
+            $buttomLabel = '关闭';
+            $dropitemLabel = '启用';
+            $dropitemURL = '?action=startModule&moduleName=' . $PathName;
+        }
+        
+        echo('
+        <div class="btn-group btn-hspace">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">' . $buttomLabel . '<span class="icon-dropdown mdi mdi-chevron-down"></span></button>
+            <div class="dropdown-menu" role="menu">
+            <a class="dropdown-item" href="?action=deleteModule&moduleName='. $PathName . '">删除</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="' . $dropitemURL . '">' . $dropitemLabel . '</a>
+            </div>
         </div>
-    </div>
-    </td>
-    </tr>
-    ');
+        ');
+    }
 }
 
 //Load the mainpage.

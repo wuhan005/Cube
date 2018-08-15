@@ -95,6 +95,9 @@
                   <li <?php echo $slider->active('Manager');?>><a href="/Manager">
                       <i class="icon mdi mdi-label"></i><span>Manager</span></a>
                   </li>
+                  <li <?php echo $slider->active('Data');?>><a href="/Data">
+                      <i class="icon mdi mdi-chart"></i><span>Data</span></a>
+                  </li>
                   <li <?php echo $slider->active('Setting');?>><a href="/Setting">
                       <i class="icon mdi mdi-settings"></i><span>Setting</span></a>
                   </li>

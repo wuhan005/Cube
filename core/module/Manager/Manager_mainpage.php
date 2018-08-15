@@ -57,7 +57,10 @@
                 <?php echo($Item['Description']);?>
                     </span>
                 </td>
+                <td class="text-right">
                 <?php dropdown($Item['PathName'],$Item['isStart']);}?>
+                </td>
+                </tr>
             </tbody>
         </table>
         </div>

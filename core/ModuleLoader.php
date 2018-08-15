@@ -1,11 +1,13 @@
 <?php
 require_once('core/Functions.php');
+// Storage part.
+require_once('Storage.php');
 
 class ModuleLoader
 {
     //The Cube system's module name.
     //The user can't use these name.
-    private $sysModule = ['Main','Setting','Account','Manager'];
+    private $sysModule = ['Main','Setting','Account','Manager','Data'];
 
     private $moduleHeader;
     private $modulePath;
@@ -14,6 +16,8 @@ class ModuleLoader
 
     public $module; //The module info which display in stage.
     public $nowModule;
+
+    public $Storage;    //Storage API
 
     //The INIT and the LOAD should be separated.
 
@@ -64,6 +68,8 @@ class ModuleLoader
 
     private function loadStage($isSystem){
         define('isSystem', $isSystem);
+
+        $this->Storage = new Storage($this->module['PathName']);
 
         //Sandbox.
         require_once('core/ModuleStage.php');
