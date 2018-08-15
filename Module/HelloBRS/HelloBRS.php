@@ -43,7 +43,6 @@ $dialogue = [
     这时候请你回想起来。那些充满欢笑的日子。<br>
     故事现在开始了。Black★Rockshooter 就存在你的心中。'
     ];
-
 ?>
 
 <div class="row">

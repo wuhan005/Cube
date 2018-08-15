@@ -1,5 +1,8 @@
 <?php
 
+//Cookie
+ob_start();
+
 //URL Router
 $urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];

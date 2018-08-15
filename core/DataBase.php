@@ -8,6 +8,7 @@ class DataBase{
     private $db;
     private $mFinder;
 
+    //Init the database connection.
     public function Init(){
         $this->db = new SQLite3('./database/Cube.db');
         $this->mFinder = new ModuleFinder();
@@ -64,6 +65,13 @@ class DataBase{
         $query = $this->db->query('SELECT Setting_OnModule FROM Setting');
         $query = $query->fetchArray(SQLITE3_ASSOC);
         return json_decode($query['Setting_OnModule']);  //Return array.
+    }
+
+    //IMPORTANT!
+    public function getAccountData(){
+        $query = $this->db->query('SELECT * FROM Account');
+        $query = $query->fetchArray(SQLITE3_ASSOC);
+        return $query;  //Return array.
     }
 
     

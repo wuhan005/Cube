@@ -19,3 +19,7 @@ function alert($type = 'success',$title = '通知',$context = ''){
             '</div>
         </div>');
 }
+
+function redirect($url){
+    echo('<script>window.location.href="' . $url . '"; </script>');
+}

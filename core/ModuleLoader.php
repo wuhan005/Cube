@@ -59,10 +59,13 @@ class ModuleLoader
             $this->setData();   //Set the forbidden data.
         }
         //Loaded!
-        $this->loadStage();
+        $this->loadStage($this->isSystem);
     }
 
-    private function loadStage(){
+    private function loadStage($isSystem){
+        define('isSystem', $isSystem);
+
+        //Sandbox.
         require_once('core/ModuleStage.php');
     }
 

@@ -28,7 +28,7 @@ class SliderDisplayer{
                 $moduleName = $this->mLoader->module['Name'];
                 $moduleIcon = $this->mLoader->module['Icon'];
 
-                echo('<li ' . $this->active($modulePathName) . '><a href="' . $module . '"><i class="icon mdi mdi-' . $moduleIcon . '"></i><span>');
+                echo('<li ' . $this->active($modulePathName) . '><a href="/' . $module . '"><i class="icon mdi mdi-' . $moduleIcon . '"></i><span>');
                 echo($moduleName); //Module Name
                 echo('</span></a></li>');
             }

@@ -1,8 +1,18 @@
 <?php
-    //Make it easy to ues.
-    $Module = $this->module;
+    //API gives to user.
 
-    global $db;
+    // Module Basic Data
+    $Module = $this->module;    //Make it easy to ues.
+
+    // Public Method
+    require_once('Method.php');
+    $mod = new Method;
+
+    // System Only Method
+    if(isSystem){
+        // Database
+        global $db;
+    }
     
     //Load the main file.
     require_once $Module['Path'];
