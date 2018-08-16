@@ -7,32 +7,21 @@ Author URI: https://wuhan5.cc/
 Version: 1.0.0
 */
 
-// URL Router.
-$nowPage = $mod->get_current_page();
-
-switch($nowPage){
-    //Submit the form from the login page.
-    case 'Account':
-        // Judge the user login or not.
-        if(!isset($_COOKIE['AccountName'])){
-            require_once('Account_Login.php');
-        }else{
-            if(isLogin()){
-                require_once('Account_Dashboard.php');
-            }else{
-                require_once('Account_Login.php');
-            }
-        }
-    break;
-    case 'LoginAction':
-        loginAction();
-    break;
-    case 'LogoutAction':
-        logoutAction();
-    break;
+if(!isset($_COOKIE['AccountName'])){
+    require_once('Account_Login.php');
+}else{
+    if(isLogin()){
+        require_once('Account_Dashboard.php');
+    }else{
+        require_once('Account_Login.php');
+    }
 }
 
-function loginAction(){
+//Register router.
+$this->router['LoginAction'] = 'loginAction';
+$this->router['LogoutAction'] = 'logoutAction';
+
+function LoginAction(){
     global $db;
 
     $nowName = $_POST['Name'];
@@ -52,7 +41,7 @@ function loginAction(){
     }
 }
 
-function logoutAction(){
+function LogoutAction(){
     setcookie('AccountName', '', time()-3600, '/');
     setcookie('AccountPasswd', '', time()-3600, '/');
     redirect('/Account');

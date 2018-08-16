@@ -3,7 +3,7 @@
 //Cookie
 ob_start();
 
-//URL Router
+//URL Router, used to load main page.
 $urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];
 if($nowPage == null){

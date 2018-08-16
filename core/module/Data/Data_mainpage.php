@@ -36,7 +36,7 @@
                     </td>
 
                     <td class="cell-detail">
-
+                        <a href="/Data/CleanData?ModuleName=<?php echo($Item['Storage_ModuleName']);?>">删除所有</a>
                     </td>
                 <?php } ?>
                 </tr>

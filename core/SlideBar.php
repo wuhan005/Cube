@@ -8,13 +8,29 @@
     <meta name="author" content="John Wu">
     <link rel="shortcut icon" href="../static/img/logo-fav.png">
     <title>Cube</title>
-    <link rel="stylesheet" type="text/css" href="../static/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/lib/jquery.gritter/css/jquery.gritter.css"/>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="../static/css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/app.css" type="text/css"/>
+
+    <script src="/static/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="/static/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="/static/lib/jquery.gritter/js/jquery.gritter.js" type="text/javascript"></script>
+    <script src="/static/js/app.js" type="text/javascript"></script>
+    <script src="/static/js/app-ui-notifications.js" type="text/javascript"></script>
+    <script src="/static/js/functions.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+      	//-initialize the javascript
+      	App.init();
+      });
+    </script>
+
     <script language='javascript'>
     function refresh(){
         document.location = '';

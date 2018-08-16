@@ -18,11 +18,13 @@ class ModuleLoader
     public $nowModule;
 
     public $Storage;    //Storage API
+    public $router;     //Page router
 
     //The INIT and the LOAD should be separated.
 
     public function Init($moduleName){
         $isSystem = in_array($moduleName , $this->sysModule);
+        $this->router = [];
 
         //GET THE MODULE HEADER HERE!!!
         $this->moduleHeader = $this->get_module_header($moduleName,$isSystem);
@@ -70,6 +72,7 @@ class ModuleLoader
         define('isSystem', $isSystem);
 
         $this->Storage = new Storage($this->module['PathName']);
+        $this->router[] = $this->module['PathName'];  //Add the moudle main page into the router.
 
         //Sandbox.
         require_once('core/ModuleStage.php');

@@ -67,3 +67,33 @@
     </div>
     </div>
 </div>
+
+<div class="modal-container modal-full-color modal-full-color-danger modal-effect-8" id="full-danger">
+<div class="modal-content">
+    <div class="modal-header">
+    <button class="close modal-close" type="button" data-dismiss="modal" aria-hidden="true"><span class="mdi mdi-close"></span></button>
+    </div>
+    <div class="modal-body">
+    <div class="text-center"><span class="modal-main-icon mdi mdi-close-circle-o"></span>
+        <h3>注意！</h3>
+        <p>你确定要删除小工具吗？<br>该操作将无法撤销！</p>
+        <div class="mt-8">
+        <button class="btn btn-secondary btn-space modal-close" type="button" data-dismiss="modal">取消</button>
+        <button class="btn btn-success btn-space modal-close" type="button" data-dismiss="modal" onClick="DeleteAction()">确认删除</button>
+        </div>
+    </div>
+    </div>
+    <div class="modal-footer"></div>
+</div>
+</div>
+
+<script>
+    var moduleName = '';
+    function reDelete(mName){
+        moduleName = mName;
+    }
+
+    function DeleteAction(){
+        window.location.href='/Manager?action=deleteModule&moduleName=' + moduleName; 
+    }
+</script>

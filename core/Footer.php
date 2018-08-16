@@ -1,17 +1,14 @@
         <!-- MODULE END HERE -->
     </div>
 </div>
-    <script src="../static/lib/jquery/jquery.min.js" type="text/javascript"></script>
-    <script src="../static/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-    <script src="../static/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="../static/js/app.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-      	//-initialize the javascript
-      	App.init();
-      	//-Runs prettify
-      	prettyPrint();
-      });
+    </body>
+    <script src="/static/lib/jquery.niftymodals/js/jquery.niftymodals.js" type="text/javascript"></script>
+    <script>
+    $.fn.niftyModal('setDefaults',{
+        overlaySelector: '.modal-overlay',
+        contentSelector: '.modal-content',
+        closeSelector: '.modal-close',
+        classAddAfterOpen: 'modal-show'
+    });
     </script>
-  </body>
 </html>
