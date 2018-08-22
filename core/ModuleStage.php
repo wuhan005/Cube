@@ -24,5 +24,11 @@
 
         //Execute!
         $pageFunction();
+    }else if($nowPage == null AND array_key_exists('', $this->router)){
+        //If the router is '', then to mainpage.
+        $pageFunction = $this->router[''];
+
+        //Execute!
+        $pageFunction();
     }
 ?>

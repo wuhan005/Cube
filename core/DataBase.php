@@ -20,7 +20,7 @@ class DataBase{
         $moduleList = json_encode($this->mFinder->getModuleList());
 
         //Update Module in the Cube.
-        $query = $this->db->exec('UPDATE Setting SET Setting_Module = \'' . $moduleList . '\'WHERE RANK = 1');
+        $query = $this->db->exec("UPDATE Setting SET Setting_Value = '$moduleList' WHERE `Setting_Name` = 'Module'");
 		if (!$query) {
 		    //TODO.
         }
@@ -40,7 +40,7 @@ class DataBase{
             $onModule[] = $moduleName;
             $onModule = json_encode($onModule);
 
-            $query = $this->db->exec('UPDATE Setting SET Setting_OnModule = \'' . $onModule . '\'WHERE RANK = 1');
+            $query = $this->db->exec("UPDATE Setting SET Setting_Value = '$onModule' WHERE `Setting_Name` = 'OnModule'");
             refresh();
         }
     }
@@ -56,8 +56,15 @@ class DataBase{
             array_splice($onModule, array_search($moduleName, $onModule), 1);
             $onModule = json_encode($onModule);
 
-            $query = $this->db->exec('UPDATE Setting SET Setting_OnModule = \'' . $onModule . '\'WHERE RANK = 1');
+            $query = $this->db->exec("UPDATE Setting SET Setting_Value = '$onModule' WHERE `Setting_Name` = 'OnModule'");
             refresh();
+        }
+    }
+
+    //Update the setting from the setting page.
+    public function updateSetting($arrayData){
+        foreach($arrayData as $key => $value){
+            $this->db->query("UPDATE Setting SET Setting_Value = '$value' WHERE `Setting_Name` = '$key'");
         }
     }
 
@@ -120,11 +127,12 @@ class DataBase{
     //=================================================================================//
 
     public function getOnModule(){
-        $query = $this->db->query('SELECT Setting_OnModule FROM Setting');
+        $query = $this->db->query('SELECT Setting_Value FROM Setting WHERE `Setting_Name` = \'OnModule\'');
         $query = $query->fetchArray(SQLITE3_ASSOC);
-        return json_decode($query['Setting_OnModule']);  //Return array.
+        return json_decode($query['Setting_Value']);  //Return array.
     }
 
+    //Module get its own data.
     public function getStorageData(){
         $query = $this->db->query('SELECT * FROM Storage');
         $returnResult = [];
@@ -132,6 +140,13 @@ class DataBase{
             $returnResult[] = $result;
         }
         return $returnResult;
+    }
+
+    //Get single setting option's data.
+    public function getSetting($Name){
+        $query = $this->db->query("SELECT Setting_Value FROM Setting WHERE `Setting_Name` = '$Name'");
+        $query = $query->fetchArray(SQLITE3_ASSOC);
+        return $query['Setting_Value'];  //Return array.
     }
 
     //IMPORTANT!

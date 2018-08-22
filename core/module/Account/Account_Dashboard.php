@@ -8,13 +8,6 @@
             <div class="nick"><span class="mdi mdi-account"></span> <?php echo($db->getAccountData()['Account_Name']);?></div>
             <?php Method::get_gravatar($db->getAccountData()['Account_Mail']);?>
         </div>
-        <div class="row user-display-details">
-            <div class="col-4">
-            <div class="title">Issues</div>
-            <div class="counter">26</div>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
 </div>
