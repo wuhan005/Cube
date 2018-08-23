@@ -45,27 +45,33 @@ class Method{
         return date('Y-m-d h:i:s',time());
     }
 
+    //Get module child page.
+    public static function getChildPage(){
+        //URL Router, used to load the second page in the module.
+        $urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
+        $nowPage = @$urlPathInfo[2];
+        return $nowPage;
+    }
+
     public function isLogin(){ 
         $nowName = @$_COOKIE['AccountName'];
         $nowPasswd = @$_COOKIE['AccountPasswd'];
     
+        //Encrypt the password.
+        $encryptNowPasswd = hash('sha256',$nowPasswd . $this->db->getSetting('Salt'));
+
         $realName = $this->db->getAccountData()['Account_Name'];
         $realPasswd = $this->db->getAccountData()['Account_Password'];
     
-        return ($realName == $nowName AND $realPasswd == $nowPasswd);
+        return ($realName == $nowName AND $realPasswd == $encryptNowPasswd);
     }
 
     //Current user data, return isLogin, name, mail.
     public function get_current_login_user(){
-        $nowName = @$_COOKIE['AccountName'];
-        $nowPasswd = @$_COOKIE['AccountPasswd'];
-    
-        $realName = $this->db->getAccountData()['Account_Name'];
-        $realPasswd = $this->db->getAccountData()['Account_Password'];
-    
-        if ($realName == $nowName AND $realPasswd == $nowPasswd){
+        $data = [];
+        if ($this->isLogin()){
             $data['isLogin'] = true;
-            $data['name'] = $realName;
+            $data['name'] = $this->db->getAccountData()['Account_Name'];
             $data['mail'] = $this->db->getAccountData()['Account_Mail'];      
         }else{
             $data['isLogin'] = false;
@@ -82,18 +88,48 @@ class Method{
         $url = 'https://dn-qiniu-avatar.qbox.me/json/';
         $url .= md5( strtolower( trim( $email ) ) );
         $url .= '.json';
-        $data = file_get_contents($url);
-        $data = json_decode($data);
 
-        $picURL = 'https://www.gravatar.com/avatar/';
-        $picURL .= md5( strtolower( trim( $email ) ) );
-        $picURL .= "?s=$size";
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_exec($curl);
 
-        $returnData['pic'] = $picURL;
-        $returnData['name'] = $data->entry[0]->name->formatted;
-        $returnData['url'] = $data->entry[0]->urls[0]->value;
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
+        $data = curl_exec($curl);
+
+        //If the user's e-mail address doesn't have gravatar data, it will return 404 status.
+        if($httpCode == 200) {
+            $data = json_decode($data);
+
+            $picURL = 'https://www.gravatar.com/avatar/';
+            $picURL .= md5( strtolower( trim( $email ) ) );
+            $picURL .= "?s=$size";
+
+            $returnData['pic'] = $picURL;
+            $returnData['name'] = $data->entry[0]->name->formatted;
+            $returnData['url'] = $data->entry[0]->urls[0]->value;
+
+        }else{
+            $returnData['pic'] = '/static/img/avatar.png';
+            $returnData['name'] = null;
+            $returnData['url'] = '';
+        }
+
+        curl_close($curl);
         return $returnData;
+    }
+
+    //Generate key.
+    public static function generateSalt($long = 64){
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_ []{}<>~`+=,.;:/?|';
+        $max   = strlen( $chars ) - 1;
+        $key = '';
+        for ( $j = 0; $j < $long; $j++ ) {
+            $key .= substr( $chars, mt_rand( 0, $max ), 1 );
+        }
+
+        return $key;
     }
 
 }

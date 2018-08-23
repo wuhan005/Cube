@@ -68,6 +68,10 @@ class ModuleLoader
         $this->loadStage($this->isSystem);
     }
 
+    public function getSystemModule(){
+        return $this->sysModule;
+    }
+
     private function loadStage($isSystem){
         define('isSystem', $isSystem);
 

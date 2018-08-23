@@ -3,7 +3,7 @@
 Module Name: Cube
 Description: Be cool. But also be warm.
 Author: John Wu
-Author URI: Link to the author's web site
+Author URI: https://wuhan5.cc/
 Version: 1.0.0
 */
 

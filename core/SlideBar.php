@@ -136,5 +136,16 @@
               <li class="breadcrumb-item"><?php echo($mLoader->module['Description'])?></li>
             </ol>
           </nav>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb page-head-nav">
+            <?php
+            ?>
+              <li class="breadcrumb-item"><?php echo($slider->topPage($mLoader->module['PathName']));?></li>
+              <li class="breadcrumb-item"><a href="/<?php echo($mLoader->module['PathName']);?>"><?php echo($mLoader->module['Name']);?></a></li>
+                    <?php if(Method::getChildPage() != null){?>
+                        <li class="breadcrumb-item active"><a href="/<?php echo($mLoader->module['PathName'] . '/' . Method::getChildPage());?>"><?php echo(Method::getChildPage());?></a></li>
+                    <?php }?>
+            </ol>
+          </nav>
         </div>
         <!-- MODULE BEGIN HERE -->

@@ -35,6 +35,16 @@ class SliderDisplayer{
         }
     }
 
+    public function topPage($pageName){
+        if($pageName == 'Main'){
+            return 'Home';
+        }else if(in_array($pageName, $this->mLoader->getSystemModule())){
+            return 'Options';
+        }else{
+            return 'Tools';
+        }
+    }
+
     public function active($moduleName){
         if($moduleName == $this->nowPage){
             return 'class="active"';

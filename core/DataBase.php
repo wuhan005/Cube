@@ -68,6 +68,13 @@ class DataBase{
         }
     }
 
+    //Update user's account data.
+    public function updateAccountData($arrayData, $nowUserID){
+        foreach($arrayData as $key => $value){
+            $this->db->query("UPDATE Account SET $key = '$value' WHERE `Account_ID` = '$nowUserID'");
+        }
+    }
+
     //===============================Module Storage Part===============================//
     public function save_data($moduleName, $key, $value){
         $query = $this->db->query("SELECT * FROM Storage WHERE `Storage_ModuleName` = '$moduleName'");
