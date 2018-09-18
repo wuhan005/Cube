@@ -10,7 +10,7 @@ class DataBase{
 
     //Init the database connection.
     public function Init(){
-        $this->db = new SQLite3('./database/Cube.db');
+        $this->db = new SQLite3(dirname( __FILE__ ) . '/database/Cube.db');
         $this->mFinder = new ModuleFinder();
         //$this->updateModule();
     }
