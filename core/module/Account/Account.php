@@ -19,7 +19,7 @@ function accountDashboard(){
     global $db;
     global $mod;
 
-    if(!isset($_COOKIE['AccountName'])){
+    if(!isset($_SESSION['AccountName'])){
         require_once('Account_Login.php');
     }else{
         if($mod->isLogin()){
@@ -66,10 +66,10 @@ function loginAction(){
     $realName = $db->getAccountData()['Account_Name'];
     $realPasswd = $db->getAccountData()['Account_Password'];
 
-    if($realName == $nowName AND $realPasswd == $encryptNowPasswd){
-        //Set cookies, 1 hours.
-        setcookie('AccountName', $nowName, time()+3600, '/');
-        setcookie('AccountPasswd', $nowPasswd, time()+3600, '/');
+    if($realName === $nowName AND $realPasswd === $encryptNowPasswd){
+        //Use sessions.
+        $_SESSION['AccountName'] = $nowName;
+        $_SESSION['AccountPasswd'] = $nowPasswd;
 
         redirect('/Account');
     }else{
@@ -78,8 +78,8 @@ function loginAction(){
 }
 
 function logoutAction(){
-    setcookie('AccountName', '', time()-3600, '/');
-    setcookie('AccountPasswd', '', time()-3600, '/');
+    //Clean all the session.
+    session_destroy();
     redirect('/Account');
 }
 

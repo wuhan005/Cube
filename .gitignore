@@ -2,3 +2,12 @@ Cube.code-workspace
 phpinfo.php
 .DS_Store
 .vscode
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/Cube.iml
+.idea/vcs.xml
+*.xml

@@ -1,7 +1,7 @@
 <?php
 
-//Cookie
-ob_start();
+//Start Session.
+session_start();
 
 //URL Router, used to load main page.
 $urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
