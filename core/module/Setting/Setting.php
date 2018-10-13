@@ -7,33 +7,38 @@ Author URI: Link to the author's web site
 Version: 1.0.0
 */
 
-//Register router
-$this->router[''] = 'main_page';
-$this->router['UpdateSettingAction'] = 'update_setting';
-
-function update_setting(){
-    global $mod; 
-    if($mod->isLogin()){
-        global $db;
-
-        //Update the setting to the database.
-        $db->updateSetting($_POST);
-        redirect('/Setting');
-    }else{
-        redirect('/Account');
+class Setting extends CubeModule{
+    public function __construct(){
+        //Register router
+        $this->router['UpdateSettingAction'] = 'update_setting';
     }
-}
 
-function main_page(){
-    global $mod;
-    if($mod->isLogin()){
-        global $db;
+    public function Setting(){
+        global $mod;
+        if($mod->isLogin()){
+            global $db;
 
-        //Main Pgae
-        require_once('Setting_mainpage.php');
-    }else{
-        redirect('/Account');
+            //Main Pgae
+            require_once('Setting_mainpage.php');
+        }else{
+            redirect('/Account');
+        }
     }
+
+
+    public function update_setting(){
+        global $mod;
+        if($mod->isLogin()){
+            global $db;
+
+            //Update the setting to the database.
+            $db->updateSetting($_POST);
+            redirect('/Setting');
+        }else{
+            redirect('/Account');
+        }
+    }
+
 }
 
 
