@@ -17,7 +17,7 @@ class Newplugin extends CubeModule{
 
     public function __Init()
     {
-        parent::__Init();
+        $this->Storage->save('aaa','adasd');
 
     }
 

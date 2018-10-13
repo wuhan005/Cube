@@ -69,7 +69,16 @@ class Manager extends CubeModule{
         global $db;
 
         if(isset($_GET['moduleName'])){
-            $db->startModule($_GET['moduleName']);
+            $moduleName = $_GET['moduleName'];
+
+            $db->startModule($moduleName);
+
+            //Init the module.
+            require_once(BASEPATH . "/Module/$moduleName/$moduleName.php");
+            $cubeModule = new $moduleName();
+            $cubeModule->Storage = new Storage($moduleName);
+            $cubeModule->__Init();
+
             showNotice('success','成功！',$_GET['moduleName'] . ' 已启用。');
         }else{
             //Missing the module name, turn error.
