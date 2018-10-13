@@ -10,9 +10,12 @@ class CubeModule
     public $Module;
     public $Storage;     //Data storage API.
     protected $db;          //Database API.
+    protected $mod;
     public $router = [];     //URL Router
 
     public function __construct(){
+        global $mod;
+        $this->mod = $mod;  //Load the public function.
 
         //If it is system module, load the database API.
         if(isSystem){

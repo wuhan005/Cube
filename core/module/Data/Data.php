@@ -7,29 +7,38 @@ Author URI: https://wuhan5.cc/
 Version: 1.0.0
 */
 
+class Data extends CubeModule{
 
-// URL Router.
-$this->router['CleanData'] = 'cleanData'; 
+    public function __construct(){
+        parent::__construct();
 
-// Judge the user login or not.
-if($mod->isLogin()){
-    $storageDataList = $db->getStorageData();
-    require_once('Data_mainpage.php');
-}else{
-    redirect('/Account');
-}
+        // URL Router.
+        $this->router['CleanData'] = 'cleanData';
+    }
 
-function cleanData(){
-    global $mod;
-
-    if($mod->isLogin()){
-        global $db;
-        if(isset($_GET['ModuleName'])){
-            $db->clean_data($_GET['ModuleName']);
-            redirect('/Data');
+    public function Data(){
+        // Judge the user login or not.
+        if($this->mod->isLogin()){
+            $storageDataList = $this->db->getStorageData();
+            require_once('Data_mainpage.php');
+        }else{
+            redirect('/Account');
         }
+    }
 
-    }else{
-        redirect('/Account');
+
+    public function cleanData(){
+        global $mod;
+
+        if($mod->isLogin()){
+            global $db;
+            if(isset($_GET['ModuleName'])){
+                $db->clean_data($_GET['ModuleName']);
+                redirect('/Data');
+            }
+
+        }else{
+            redirect('/Account');
+        }
     }
 }
