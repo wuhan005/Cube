@@ -14,7 +14,7 @@
 <div class="form-group row">
     <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputDefault">管理员密码</label>
     <div class="col-12 col-sm-8 col-lg-3">
-    <input type="password" name="password" class="form-control form-control-sm" id="password" type="text" value="<?php echo(@$_COOKIE['AccountPasswd']);?>">
+    <input type="password" name="password" class="form-control form-control-sm" id="password" type="text" value="<?php echo(@$_SESSION['AccountPasswd']);?>">
     </div>
 </div>
 <!-- 提交按钮 -->
