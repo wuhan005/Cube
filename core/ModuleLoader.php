@@ -1,7 +1,6 @@
 <?php
 require_once('core/Functions.php');
-// Storage part.
-require_once('Storage.php');
+require_once('CubeModule.php');
 
 class ModuleLoader
 {
@@ -9,47 +8,38 @@ class ModuleLoader
     //The user can't use these name.
     private $sysModule = ['Main','Setting','Account','Manager','Data'];
 
+    private $cubeModule; //Now module.
+
     private $moduleHeader;
     private $modulePath;
     private $moduleName;
     private $isSystem;
 
-    public $module; //The module info which display in stage.
+    public $module; //The module info used by the loader.
     public $nowModule;
-
-    public $Storage;    //Storage API
-    public $router;     //Page router
 
     //The INIT and the LOAD should be separated.
 
     public function Init($moduleName){
-        $isSystem = in_array($moduleName , $this->sysModule);
-        $this->router = [];
+        $this->isSystem = in_array($moduleName , $this->sysModule);
 
-        //GET THE MODULE HEADER HERE!!!
-        $this->moduleHeader = $this->get_module_header($moduleName,$isSystem);
+        //GET THE MODULE HEADER DATA HERE!!!
+        $this->moduleHeader = $this->getHeaderData($moduleName,$this->isSystem);
 
-        //If it's system module,turn error.
-        if($isSystem){
-            if($this->moduleHeader['System'] != True ){
+        //If it's user made system's module,turn error.
+        if($this->isSystem){
+            if($this->moduleHeader['System'] !== True ){
                 back_error();
                 die();
             }
         }
 
-        $this->setData();
-    }
+        $this->setData();   //Get the module's data.
 
-    //Init the module when turn on.
-    public function initModule($moduleName){
-        require_once("Module/$moduleName/$moduleName.php");
-
-        __SetUp();      //Call the module's function.
     }
 
     //Set the data for users.
     private function setData(){
-        $nowModule = $this->module['Name'];
 
         //The module headers which users can only use.
         //'module[]' will be sent to the user in the ModuleStage.
@@ -67,30 +57,44 @@ class ModuleLoader
     //PUBLIC USED. Load the module.
     public function Load(){
         global $db;
+
         //If the module is users', judge the module is started or not.
         if(!$this->isSystem and !in_array($this->moduleName,$db->getOnModule())){
-            $this->moduleHeader = $this->forbiddenPage();
-            $this->setData();   //Set the forbidden data.
+            $this->moduleHeader = $this->forbiddenPage(); //Set the forbidden data.
+            $this->setData();  //Refresh the module data.
         }
-        //Loaded!
-        $this->loadStage($this->isSystem);
+
+        //$this->loadStage($this->isSystem);
+
+        define('isSystem', $this->isSystem);    //Set the module's type, can't be edited.
+
+        require_once($this->module['Path']);
+
+        //Load the module.
+        $this->cubeModule = new $this->module['PathName']();
+        $this->cubeModule->router[''] = $this->module['PathName'];  //Add the module main page into the router.
+        $this->cubeModule->Storage = new Storage($this->moduleName);     //Init the Storage part.
+
+        //Child page router.
+        $nowPage = Method::getChildPage();
+        $router = $this->cubeModule->router;
+
+        if($nowPage != null AND array_key_exists($nowPage, $router)){
+            $pageFunction = $router[$nowPage];
+        }else{
+            //If the router is '', then to mainpage.
+            $pageFunction = $this->cubeModule->router[''];
+        }
+
+        //Execute!
+        $this->cubeModule->$pageFunction();
     }
 
     public function getSystemModule(){
         return $this->sysModule;
     }
 
-    private function loadStage($isSystem){
-        define('isSystem', $isSystem);
-
-        $this->Storage = new Storage($this->module['PathName']);
-        $this->router[] = $this->module['PathName'];  //Add the moudle main page into the router.
-
-        //Sandbox.
-        require_once('core/ModuleStage.php');
-    }
-
-    private function get_module_header($moduleName,$isSystem=false){
+    private function getHeaderData($moduleName,$isSystem=false){
 
         $this->moduleName = $moduleName;
         $this->isSystem = $isSystem;
@@ -100,17 +104,17 @@ class ModuleLoader
         }else{
             $this->modulePath = 'Module/'. $moduleName .'/' . $moduleName . '.php';
         }
-    
+
         //Make sure the main PHP file is existed.
         if(!file_exists($this->modulePath)){
             //Return error header.
             return $this->errorPage($this->moduleName);
         }else{
-            return $this->getHeaders();
+            return $this->readHeaders();
         }
     }
 
-    private function getHeaders(){
+    private function readHeaders(){
         //Just read the file.
         $fp = fopen($this->modulePath,'r');
         $file_data = fread($fp,filesize($this->modulePath));
@@ -134,7 +138,7 @@ class ModuleLoader
                 //Has the useless part.
             } else {
                 $allHeaders[ $field ] = '';
-            }   
+            }
         }
 
         //Add the isSystem info.

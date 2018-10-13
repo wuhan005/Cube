@@ -7,19 +7,27 @@ Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0
 */
-?>
 
+class Newplugin extends CubeModule{
 
-<?php
-$this->Storage->save('MyFirstData', 'OKOKssOKOK');
-//$this->Storage->
+    public function __construct(){
+        parent::__construct();
+        $this->router['me'] = 'qqq';
+    }
 
-function __SetUp(){
-    $this->Storage->save('SetupData','ok');
+    public function __Init()
+    {
+        parent::__Init();
+
+    }
+
+    public function NewPlugin(){
+        echo('Main FUnction');
+    }
+
+    public function qqq(){
+        echo('yoyoyoyoyoyoyyo');
+    }
+
 }
 
-
-?>
-<div class="main-content container-fluid">
-    <h3 class="text-center"></h3>
-</div>
