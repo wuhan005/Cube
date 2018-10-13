@@ -10,22 +10,40 @@ Version: 1.0.0
 require_once('core/ModuleFinder.php');
 require_once('core/ModuleLoader.php');
 
-$mFinder = new ModuleFinder();
-$moduleList = $mFinder->getModuleList();
+class Main extends CubeModule{
 
-$mLoader = new ModuleLoader();  //Used to load the single module.
+    private $mFinder;
+    private $mLoader;
+    private $moduleList;
+    private $moduleDetailList;
+    private $errorModuleNumber;
 
-$moduleDetailList = array();
-$errorModuleNumber = 0;
+    public function __construct(){
 
-foreach($moduleList as $value){
-    $mLoader->Init($value); 
-    $moduleDetailList[] = $mLoader->module;   //Add the single module's info to the detail list.
-    
-    //Judge if the module is error by the path.
-    if($mLoader->module['Path'] == '/core/module/Error/Error.php'){
-        $errorModuleNumber++;
+        parent::__construct();
+
+        $this->mFinder = new ModuleFinder();
+        $this->moduleList = $this->mFinder->getModuleList();
+        $this->mLoader = new ModuleLoader();  //Used to load the single module.
+
+    }
+
+    public function Main(){
+
+        $this->moduleDetailList = array();
+        $this->errorModuleNumber = 0;
+
+        foreach($this->moduleList as $value){
+            $this->mLoader->Init($value);
+            $this->moduleDetailList[] = $this->mLoader->module;   //Add the single module's info to the detail list.
+
+            //Judge if the module is error by the path.
+            if($this->mLoader->module['Path'] == '/core/module/Error/Error.php'){
+                $this->errorModuleNumber++;
+            }
+        }
+
+        require_once('Main_mainpage.php');
     }
 }
 
-require_once('Main_mainpage.php');

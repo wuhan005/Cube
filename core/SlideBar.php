@@ -153,3 +153,4 @@
           </nav>
         </div>
         <!-- MODULE BEGIN HERE -->
+          <div class="container">

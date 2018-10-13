@@ -1,3 +1,4 @@
+    </div>
         <!-- FOOTER -->
         <hr>
 <footer class="footer text-center text-muted">

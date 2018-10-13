@@ -4,7 +4,7 @@
         <div class="widget widget-tile">
             <div class="data-info">
             <div class="desc">小工具</div>
-            <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number"><?php echo count($moduleDetailList);?> 个</span>
+            <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span class="number"><?php echo count($this->moduleDetailList);?> 个</span>
             </div>
             </div>
         </div>
@@ -13,7 +13,7 @@
         <div class="widget widget-tile">
             <div class="data-info">
             <div class="desc">发生错误的小工具</div>
-            <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-right"></span><span class="number"><?php echo $errorModuleNumber;?> 个</span>
+            <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-right"></span><span class="number"><?php echo $this->errorModuleNumber;?> 个</span>
             </div>
             </div>
         </div>

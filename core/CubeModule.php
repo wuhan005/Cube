@@ -33,10 +33,12 @@ class CubeModule
     }
 
     protected function LoadPage($pageName){
-        if(file_exists($pageName)){
-            require_once($pageName);
+        if(file_exists($pageName . '.php')){
+            require_once($pageName . '.php');
+        }else if(file_exists($pageName . '.html')){
+            require_once($pageName . '.html');
         }else{
-            //TODO
+
         }
     }
 
