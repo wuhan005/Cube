@@ -25,7 +25,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach($moduleDetailList as $Item){?>
+            <?php foreach($this->moduleDetailList as $Item){?>
                 <tr>
                 <td>
                 <label class="custom-control custom-control-sm custom-checkbox">
@@ -58,7 +58,7 @@
                     </span>
                 </td>
                 <td class="text-right">
-                <?php dropdown($Item['PathName'],$Item['isStart']);}?>
+                <?php $this->dropdown($Item['PathName'],$Item['isStart']);}?>
                 </td>
                 </tr>
             </tbody>
