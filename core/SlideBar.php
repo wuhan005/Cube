@@ -51,11 +51,15 @@
                 <!--User Icon --> 
                   <a href="/Account" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                       <img src="
-                    <?php 
-                      if($mod->get_current_login_user()['isLogin']){ 
-                        echo(Method::get_gravatar($mod->get_current_login_user()['mail'], 32)['pic']);
+                    <?php
+                      if($db->getSetting('UseGravatar') == 'on'){
+                          if($mod->get_current_login_user()['isLogin']){
+                              echo(Method::get_gravatar($mod->get_current_login_user()['mail'], 32)['pic']);
+                          }else{
+                              echo('/static/img/avatar.png');
+                          }
                       }else{
-                        echo('/static/img/avatar.png');
+                            echo('/static/img/avatar.png');
                       }
                     ?>" alt="Avatar">
                       <span class="user-name"><?php echo($mod->get_current_login_user()['name']);?></span>

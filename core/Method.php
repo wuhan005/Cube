@@ -131,5 +131,4 @@ class Method{
 
         return $key;
     }
-
 }

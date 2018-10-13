@@ -2,15 +2,27 @@
     <div class="user-display">
         <div class="user-display-bg"><img src="/static/img/user-profile-display.png" alt="Profile Background"/></div>
         <div class="user-display-bottom">
-            <div class="user-display-avatar"><img src="<?php echo(Method::get_gravatar($db->getAccountData()['Account_Mail'], 150 )['pic']);?>" alt="Avatar"></div>
+            <div class="user-display-avatar"><img src="
+            <?php
+                //Judge the user is willing to use the gravatar.
+                if($db->getSetting('UseGravatar') == 'on') {
+                    echo(Method::get_gravatar($db->getAccountData()['Account_Mail'], 150)['pic']);
+                }else {
+                    echo('/static/img/avatar.png');
+                }
+                ?>" alt="Avatar"></div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="user-display-info">
                         <div class="name">
-                        <?php 
-                        //Judge the user has the gravatar data.
-                        if(Method::get_gravatar( $db->getAccountData()['Account_Mail'] )['name'] != null){
-                            echo( Method::get_gravatar( $db->getAccountData()['Account_Mail'] )['name']); 
+                        <?php
+                        if($db->getSetting('UseGravatar') == 'on') {
+                            //Judge the user has the gravatar data.
+                            if (Method::get_gravatar($db->getAccountData()['Account_Mail'])['name'] != null) {
+                                echo(Method::get_gravatar($db->getAccountData()['Account_Mail'])['name']);
+                            } else {
+                                echo($db->getAccountData()['Account_Name']);
+                            }
                         }else{
                             echo($db->getAccountData()['Account_Name']);
                         }

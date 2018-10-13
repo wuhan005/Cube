@@ -149,6 +149,14 @@ class DataBase{
         return $returnResult;
     }
 
+    //Get the init modules, return Array.
+    public function getInitModule(){
+        $result = $this->getSetting('IsInitModule');
+        $result = json_decode($result, true);
+
+        return $result;
+    }
+
     //Get single setting option's data.
     public function getSetting($Name){
         $query = $this->db->query("SELECT Setting_Value FROM Setting WHERE `Setting_Name` = '$Name'");

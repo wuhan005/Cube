@@ -1,7 +1,7 @@
 <!-- 表单开始 -->
 <form action="/Setting/UpdateSettingAction" method="POST" style="border-radius: 0px;">
 <div class="card card-border-color card-border-color-primary">
-<!-- 标题 -->
+<!-- Cube 通用设置 标题 -->
 <div class="card-header card-header-divider">通用<span class="card-subtitle">Cube 的一般设置</span></div>
 <div class="card-body">
     <div class="form-group row">
@@ -21,12 +21,27 @@
         </div>
     </div>
     <div class="form-group row">
+        <label class="col-12 col-sm-3 col-form-label text-sm-right">使用 Gravatar 头像（关闭可提高页面加载速度）</label>
+        <div class="switch-button switch-button-lg">
+            <input type="hidden" name="UseGravatar" value="off">
+            <input type="checkbox" <?php echo($db->getSetting('UseGravatar') == 'on'?'checked':'');?>  name="UseGravatar" id="UseGravatar"><span>
+            <label for="UseGravatar"></label></span>
+        </div>
+    </div>
+    <div class="form-group row">
         <label class="col-12 col-sm-3 col-form-label text-sm-right" for="inputDefault">ICP备案号(留空则不显示)</label>
         <div class="col-12 col-sm-8 col-lg-6">
         <input name="ICP" class="form-control form-control-sm" id="inputDefault" type="text" value="<?php echo($db->getSetting('ICP')); ?>" placeholder="中国服务器需备案">
         </div>
     </div>
    
+</div>
+
+<!-- Module 自定义设置 标题 -->
+<div class="card-header card-header-divider">小工具设置</div>
+<div class="card-body">
+
+
 </div>
 </div>
 <!-- 提交按钮 -->

@@ -40,6 +40,13 @@ class ModuleLoader
         $this->setData();
     }
 
+    //Init the module when turn on.
+    public function initModule($moduleName){
+        require_once("Module/$moduleName/$moduleName.php");
+
+        __SetUp();      //Call the module's function.
+    }
+
     //Set the data for users.
     private function setData(){
         $nowModule = $this->module['Name'];
@@ -54,6 +61,7 @@ class ModuleLoader
         $this->module['AuthorURI'] = $this->emptyFix($this->moduleHeader['AuthorURI']);
         $this->module['PathName'] = $this->moduleName;    //The module folder's name.
         $this->module['Path'] = $this->moduleHeader['Path'];
+        $this->module['ResPath'] = '/Module/' . $this->moduleName . '/';
     }
 
     //PUBLIC USED. Load the module.

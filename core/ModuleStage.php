@@ -13,6 +13,7 @@
         global $db;
     }
 
+
     //Load the main file.
     require_once $Module['Path'];
 

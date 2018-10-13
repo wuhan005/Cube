@@ -31,9 +31,12 @@ foreach($moduleList as $value){
 
 function startModule(){
     global $db;
+    global $mLoader;
+
     if(isset($_GET['moduleName'])){
         $db->startModule($_GET['moduleName']);
         showNotice('success','成功！',$_GET['moduleName'] . ' 已启用。');
+        $mLoader->initModule($_GET['moduleName']);
     }else{
         //Missing the module name, turn error.
         showNotice('danger','警告！','缺少参数！');
@@ -42,6 +45,7 @@ function startModule(){
 
 function offModule(){
     global $db;
+
     if(isset($_GET['moduleName'])){
         $db->offModule($_GET['moduleName']);
         showNotice('success','成功！',$_GET['moduleName'] . ' 已关闭。');

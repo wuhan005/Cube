@@ -11,12 +11,15 @@ class Storage{
 
     public function save($key = '', $value = ''){
         global $db;
-        if($key != ''){
-            $db->save_data($this->nowModule, $key, $value);
-            return true;
-        }else{
-            return false;
-        }
+        //Judge the key is existed or not.
+
+            if($key != ''){
+                $db->save_data($this->nowModule, $key, $value);
+                return true;
+            }else{
+                return false;
+            }
+
     }
 
     public function get($key = ''){
