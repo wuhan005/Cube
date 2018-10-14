@@ -36,6 +36,8 @@ class Manager extends CubeModule{
 
             $this->moduleDetailList[] = $moduleInfo;  //Add the single module's info to the detail list.
         }
+
+        $this->router['UploadModule'] = 'upload_module';
     }
 
     public function Manager(){
@@ -63,6 +65,11 @@ class Manager extends CubeModule{
 
         //Load the mainpage.
         require_once('Manager_mainpage.php');
+    }
+
+    public function upload_module(){
+        File::uploadModule($_FILES['fileUploader']);
+        redirect('/Manager');
     }
 
     private function startModule(){

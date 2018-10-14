@@ -20,7 +20,7 @@
     <script src="/static/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="/static/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="/static/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="/static/lib/jquery.gritter/js/jquery.gritter.js" type="text/javascript"></script>
+    <script src="/static/lib/jquery.gritter/js/jquery.gritter.min.js" type="text/javascript"></script>
     <script src="/static/js/app.min.js" type="text/javascript"></script>
     <script src="/static/js/app-ui-notifications.js" type="text/javascript"></script>
     <script src="/static/js/functions.js" type="text/javascript"></script>

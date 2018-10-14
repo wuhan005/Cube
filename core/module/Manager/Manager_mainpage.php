@@ -1,4 +1,10 @@
 <div class="col-sm-12">
+    <form action="/Manager/UploadModule" method="POST" enctype="multipart/form-data">
+    <input class="inputfile" id="fileUploader" type="file" name="fileUploader">
+    <label class="btn-primary" for="fileUploader"> <i class="mdi mdi-upload"></i><span>选择小工具...</span></label>
+        <button type="submit" class="btn btn-space btn-secondary">上传</button>
+    </form>
+
     <div class="card card-table">
     <div class="card-header">小工具
         <div class="tools dropdown"><a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"><span class="icon mdi mdi-more-vert"></span></a>
