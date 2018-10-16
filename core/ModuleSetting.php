@@ -1,6 +1,6 @@
 <?php
 
-class Setting
+class ModuleSetting
 {
     private $moduleName;
 
@@ -8,7 +8,7 @@ class Setting
         $this->moduleName = $_moduleName;
     }
 
-    public function add_setting($, $_setting){
+    public function add_setting($_moduleID, $_setting){
         global $db;
         return $db->add_setting($_setting);
     }

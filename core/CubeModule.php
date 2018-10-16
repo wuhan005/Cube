@@ -5,7 +5,7 @@
 require_once('Storage.php');
 
 // Setting part.
-require_once('Setting.php');
+require_once('ModuleSetting.php');
 
 class CubeModule
 {

@@ -75,7 +75,7 @@ class ModuleLoader
         $this->cubeModule->Module = $this->module;
         $this->cubeModule->router[''] = $this->module['PathName'];  //Add the module main page into the router.
         $this->cubeModule->Storage = new Storage($this->moduleName);     //Init the Storage part.
-        $this->cubeModule->Setting = new Setting($this->moduleName);    //Init the Setting part.
+        $this->cubeModule->Setting = new ModuleSetting($this->moduleName);    //Init the Setting part.
 
         //Child page router.
         $nowPage = Method::getChildPage();
