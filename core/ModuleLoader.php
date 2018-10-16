@@ -72,6 +72,7 @@ class ModuleLoader
 
         //Load the module.
         $this->cubeModule = new $this->module['PathName']();
+        $this->cubeModule->Module = $this->module;
         $this->cubeModule->router[''] = $this->module['PathName'];  //Add the module main page into the router.
         $this->cubeModule->Storage = new Storage($this->moduleName);     //Init the Storage part.
 

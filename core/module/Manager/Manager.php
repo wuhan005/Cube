@@ -68,7 +68,9 @@ class Manager extends CubeModule{
     }
 
     public function upload_module(){
-        File::uploadModule($_FILES['fileUploader']);
+        if($this->mod->isLogin()){
+            File::uploadModule($_FILES['fileUploader']);
+        }
         redirect('/Manager');
     }
 

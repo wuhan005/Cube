@@ -1,2 +1,1 @@
-asfsabhfjhabfabfaj
-
+<?php var_dump($this->Module['ResPath']);?>
