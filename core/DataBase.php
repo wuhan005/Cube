@@ -133,6 +133,61 @@ class DataBase{
     }
     //=================================================================================//
 
+
+    //===============================Module Setting Part===============================//
+    public function add_setting($_moduleID, $_setting){
+        //Make sure the database has the module's setting field.
+
+        $query = $this->db->query("SELECT * FROM Options WHERE `ModuleID` = $_moduleID");
+        $query = $query->fetchArray(SQLITE3_ASSOC);
+
+        //If empty, add the module's field.
+        if($query == false OR empty($query)){
+            $this->db->exec("INSERT INTO Options (`ModuleID`) VALUES ($_moduleID)");
+
+            //Get the data again.
+            $query = $this->db->query("SELECT * FROM Options WHERE `ModuleID` = $_moduleID");
+            $query = $query->fetchArray(SQLITE3_ASSOC);
+        }
+
+        $settingItem = $query['Item'];
+        $settingItem = json_decode($settingItem, true);
+
+        $settingItem[] = $_setting;
+        $settingItem = json_encode($settingItem);
+
+        //Update the data.
+        $this->db->exec("UPDATE Options SET Item = '$settingItem' WHERE `ModuleID` = '$_moduleID'");
+
+        return true;    //Show good news.
+
+    }
+
+    public function get_setting($_name){
+        $query = $this->db->query("SELECT * FROM Options WHERE `ModuleID` = $_moduleID");
+        $query = $query->fetchArray(SQLITE3_ASSOC);
+
+        if($query == false OR empty($query)){
+            return false;
+        }
+
+        $settingItem = $query['Item'];
+        $settingItem = json_decode($settingItem, true);
+
+        if(isset($settingItem[$_name])){
+            return $settingItem[$_name];
+        }else{
+            return false;
+        }
+
+    }
+
+    public function set_setting($_name, $_data){
+        //$query = $this->db->query("");
+    }
+
+    //=================================================================================//
+
     public function getOnModule(){
         $query = $this->db->query('SELECT Setting_Value FROM Setting WHERE `Setting_Name` = \'OnModule\'');
         $query = $query->fetchArray(SQLITE3_ASSOC);

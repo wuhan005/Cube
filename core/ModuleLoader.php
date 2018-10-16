@@ -68,13 +68,14 @@ class ModuleLoader
 
         define('isSystem', $this->isSystem);    //Set the module's type, can't be edited.
 
-        require_once($this->module['Path']);
+        require_once($this->module['Path']);    //Load the module file.
 
         //Load the module.
         $this->cubeModule = new $this->module['PathName']();
         $this->cubeModule->Module = $this->module;
         $this->cubeModule->router[''] = $this->module['PathName'];  //Add the module main page into the router.
         $this->cubeModule->Storage = new Storage($this->moduleName);     //Init the Storage part.
+        $this->cubeModule->Setting = new Setting($this->moduleName);    //Init the Setting part.
 
         //Child page router.
         $nowPage = Method::getChildPage();

@@ -3,8 +3,6 @@
 //Start Session.
 session_start();
 
-$qqq = '123456 d';
-
 //URL Router, used to load main page.
 $urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];
