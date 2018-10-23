@@ -43,12 +43,13 @@ class CubeModule
     }
 
     protected function LoadPage($pageName){
-        if(file_exists($pageName . '.php')){
-            require_once($pageName . '.php');
-        }else if(file_exists($pageName . '.html')){
-            require_once($pageName . '.html');
-        }else{
+        $filePath = BASEPATH . "/Module/{$this->Module['PathName']}/" . $pageName;
 
+        if(file_exists($filePath)){
+            require_once($filePath);
+        }else{
+            Alert::show('找不到页面 ' . $pageName, ERROR);
+            return false;
         }
     }
 

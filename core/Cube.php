@@ -13,6 +13,9 @@ if($nowPage == null){
 
 //PAY ATTENTION TO THE LOADING ORDER.
 
+//Error message part.
+require_once 'Alert.php';
+
 //Load the database.
 require_once 'DataBase.php';
 $db = new DataBase;
