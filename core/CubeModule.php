@@ -4,9 +4,6 @@
 // Storage part.
 require_once('Storage.php');
 
-// Setting part.
-require_once('ModuleSetting.php');
-
 class CubeModule
 {
 
@@ -53,17 +50,6 @@ class CubeModule
         }
     }
 
-    protected function AddSetting($setting){
-        return $this->Setting->add_setting($setting);
-    }
-
-    protected function GetSetting($name){
-        return $this->Setting->get_setting($name);
-    }
-
-    protected function SetSetting($name, $data){
-        return $this->Setting->set_setting($name, $data);
-    }
 
 
 }

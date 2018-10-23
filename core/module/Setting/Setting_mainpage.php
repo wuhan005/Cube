@@ -36,14 +36,6 @@
     </div>
    
 </div>
-
-<!-- Module 自定义设置 标题 -->
-<div class="card-header card-header-divider">小工具设置</div>
-<div class="card-body">
-
-
-</div>
-</div>
 <!-- 提交按钮 -->
 <div class="row">
     <div class="col-sm-6">
