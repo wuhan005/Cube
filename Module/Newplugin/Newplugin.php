@@ -6,6 +6,7 @@ Icon: ticket-star
 Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0
+Auth: No
 */
 
 class Newplugin extends CubeModule{

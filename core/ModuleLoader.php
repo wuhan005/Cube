@@ -49,6 +49,7 @@ class ModuleLoader
         $this->module['Icon'] = $this->emptyFix($this->moduleHeader['Icon']);
         $this->module['Author'] = $this->emptyFix($this->moduleHeader['Author']);
         $this->module['AuthorURI'] = $this->emptyFix($this->moduleHeader['AuthorURI']);
+        $this->module['Auth'] = $this->emptyFix($this->moduleHeader['Auth']);
         $this->module['PathName'] = $this->moduleName;    //The module folder's name.
         $this->module['Path'] = $this->moduleHeader['Path'];
         $this->module['ResPath'] = '/Module/' . $this->moduleName . '/';
@@ -57,6 +58,7 @@ class ModuleLoader
     //PUBLIC USED. Load the module.
     public function Load(){
         global $db;
+        global $mod;
 
         //If the module is users', judge the module is started or not.
         if(!$this->isSystem and !in_array($this->moduleName,$db->getOnModule())){
@@ -87,8 +89,19 @@ class ModuleLoader
             $pageFunction = $this->cubeModule->router[''];
         }
 
+
+        //Make sure it is a standard module.
+        if(!class_exists($this->module['PathName'])){
+            //Alert::show('不是标准的小工具，停止加载。');
+        }
+
         //Execute!
-        $this->cubeModule->$pageFunction();
+        //Make sure the account access.
+        if(($this->module['Auth'] == 'Yes' AND $mod->isLogin()) || $this->module['Auth'] != 'Yes'){
+            $this->cubeModule->$pageFunction();
+        }else{
+            redirect('/Account');
+        }
     }
 
     public function getSystemModule(){
@@ -109,6 +122,7 @@ class ModuleLoader
         //Make sure the main PHP file is existed.
         if(!file_exists($this->modulePath)){
             //Return error header.
+            //404 Error.
             return $this->errorPage($this->moduleName);
         }else{
             return $this->readHeaders();
@@ -131,7 +145,8 @@ class ModuleLoader
             'Description' => 'Description',
             'Icon'        => 'Icon',
             'Author'      => 'Author',
-            'AuthorURI'   => 'Author URI'
+            'AuthorURI'   => 'Author URI',
+            'Auth'        => 'Auth',    //Need login to access
         );
         foreach ( $allHeaders as $field => $regex ) {
             if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( $regex, '/' ) . ':(.*)$/mi', $file_data, $match ) && $match[1] ) {

@@ -5,6 +5,7 @@ Description: 管理账户
 Author: John Wu
 Author URI: https://wuhan5.cc/
 Version: 1.0.0
+Auth: No
 */
 
 class Account extends CubeModule{
