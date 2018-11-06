@@ -28,9 +28,9 @@ class SliderDisplayer{
                 $moduleName = $this->mLoader->module['Name'];
                 $moduleIcon = $this->mLoader->module['Icon'];
 
-                echo('<li ' . $this->active($modulePathName) . '><a href="/' . $module . '"><i class="icon mdi mdi-' . $moduleIcon . '"></i><span>');
+                echo('<li ' . $this->active($modulePathName) . '><a href="/' . $module . '"><span class="uk-margin-small-right" uk-icon="icon: ' . $moduleIcon . '"></span> ');
                 echo($moduleName); //Module Name
-                echo('</span></a></li>');
+                echo('</a></li>');
             }
         }
     }
@@ -47,7 +47,7 @@ class SliderDisplayer{
 
     public function active($moduleName){
         if($moduleName == $this->nowPage){
-            return 'class="active"';
+            return 'class="uk-active"';
         }else{
             return '';
         }

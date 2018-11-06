@@ -1,30 +1,24 @@
-    </div>
-        <!-- FOOTER -->
-        <hr>
-<footer class="footer text-center text-muted">
+    <!-- MODULE END HERE -->
+    <!-- FOOTER -->
+    <hr>
+    <div>
 
-<?php
-    if($db->getSetting('ModuleFooterInfo') == 'on'){
-        echo($mLoader->module['Name'] . ' / Developed by <a href="' . $mLoader->module['AuthorURI'] . '" target="_blank"><b>' . $mLoader->module['Author'] . '</b></a><br>');
-    }
-?>
+    <span class="uk-article-meta">
+    <?php
+        if($db->getSetting('ModuleFooterInfo') == 'on'){
+            echo($mLoader->module['Name'] . ' / Developed by <a href="' . $mLoader->module['AuthorURI'] . '" target="_blank"><b>' . $mLoader->module['Author'] . '</b></a><br>');
+        }
+    ?>
+    </span>
 
-    Cube · Create everything you want!
-    <br>
-    <a href="http://www.miitbeian.gov.cn/" target="_black"><?php echo($db->getSetting('ICP'));?></a>
-</footer>
-        <!-- MODULE END HERE -->
+        <span class="uk-article-meta">Cube · Create everything you want!</span>
+
+        <br>
+        
+        <a href="http://www.miitbeian.gov.cn/" target="_black"><?php echo($db->getSetting('ICP'));?></a>
     </div>
-</div>
+
+    </div>
 
 </body>
-<script src="/static/lib/jquery.niftymodals/js/jquery.niftymodals.js" type="text/javascript"></script>
-<script>
-$.fn.niftyModal('setDefaults',{
-    overlaySelector: '.modal-overlay',
-    contentSelector: '.modal-content',
-    closeSelector: '.modal-close',
-    classAddAfterOpen: 'modal-show'
-});
-</script>
 </html>
