@@ -8,7 +8,7 @@ function refresh(){
 }
 
 function showNotice($type = 'success',$title = '通知',$context = ''){
-    echo("<script>ShowNotification('$title', '$context', '$type');</script>");
+    echo("<script>UIkit.notification({message: '<p>$title <br> $context</p>', pos: 'bottom-right', status: '$type'});</script>");
 }
 
 function redirect($url){

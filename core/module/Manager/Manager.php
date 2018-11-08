@@ -145,13 +145,13 @@ class Manager extends CubeModule{
             }
 
             echo('
-            <div class="btn-group btn-hspace">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">' . $buttomLabel . '<span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-                <div class="dropdown-menu" role="menu">
-                <button class="btn btn-space md-trigger dropdown-item" data-modal="full-danger" onClick="reDelete(\'' . $PathName . '\')">删除</button>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="' . $dropitemURL . '">' . $dropitemLabel . '</a>
-                </div>
+            <button class="uk-button uk-button-default" type="button">已' . $buttomLabel . '</button>
+            <div uk-dropdown>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="' . $dropitemURL . '">' . $dropitemLabel . '</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a onClick="reDelete(\'' . $PathName . '\')" uk-toggle="target: #SureDeleteModal" href="#" >删除</a></li>
+                </ul>
             </div>
             ');
         }
