@@ -25,26 +25,10 @@
     <!-- Top NavBar -->
     <nav class="uk-navbar-container uk-margin" uk-navbar>
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+            <a class="uk-navbar-item uk-logo" href="/"><img src="/static/img/logo-xx.png"/></a>
 
-            <ul class="uk-navbar-nav">
-                <li>
-                    <a href="#">
-                        <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
-                        Features
-                    </a>
-                </li>
-            </ul>
+            <div class="uk-navbar-item uk-position-right">
 
-            <div class="uk-navbar-item">
-                <div>Some <a href="#">Link</a></div>
-            </div>
-
-            <div class="uk-navbar-item">
-                <form action="javascript:void(0)">
-                <input class="uk-input uk-form-width-small" type="text" placeholder="Input">
-                <button class="uk-button uk-button-default">Button</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -61,13 +45,13 @@
 
                 <li class="uk-nav-header">Options</li>
 
-                <li <?php echo $slider->active('Account');?>><a href="/Account"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Account</a></li>
+                <li <?php echo $slider->active('Account');?>><a href="/Account"><span class="uk-margin-small-right" uk-icon="icon: user"></span> Account</a></li>
                 
                 <?php if(!($db->getSetting('ShowLoginOptions') == 'off' AND $mod->isLogin() == false)){ ?>
 
-                    <li <?php echo $slider->active('Manager');?>><a href="/Manager"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Manager</a></li>
-                    <li <?php echo $slider->active('Data');?>><a href="/Data"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Data</a></li>
-                    <li <?php echo $slider->active('Setting');?>><a href="/Setting"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Setting</a></li>
+                    <li <?php echo $slider->active('Manager');?>><a href="/Manager"><span class="uk-margin-small-right" uk-icon="icon: settings"></span> Manager</a></li>
+                    <li <?php echo $slider->active('Data');?>><a href="/Data"><span class="uk-margin-small-right" uk-icon="icon: database"></span> Data</a></li>
+                    <li <?php echo $slider->active('Setting');?>><a href="/Setting"><span class="uk-margin-small-right" uk-icon="icon: cog"></span> Setting</a></li>
                 
                 <?php } ?>
 
@@ -85,8 +69,6 @@
 
             <!-- Breadcrumb -->
             <ul class="uk-breadcrumb">
-                <li><a href="#">Item</a></li>
-                <li><span>Active</span></li>
                 <li><?php echo($slider->topPage($mLoader->module['PathName']));?></li>
                 <li><a href="/<?php echo($mLoader->module['PathName']);?>"><?php echo($mLoader->module['Name']);?></a></li>
                     <?php if(Method::getChildPage() != null){?>

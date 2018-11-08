@@ -6,7 +6,7 @@
         <label class="uk-form-label" for="form-stacked-text">页面底部显示当前小工具信息</label>
         <div class="uk-form-controls">
             <input type="hidden" name="ModuleFooterInfo" value="off">
-            <input type="checkbox" <?php echo($db->getSetting('ModuleFooterInfo') == 'on'?'checked':'');?> name="ModuleFooterInfo" id="ModuleFooterInfo">
+            <input class="uk-checkbox" type="checkbox" <?php echo($db->getSetting('ModuleFooterInfo') == 'on'?'checked':'');?> name="ModuleFooterInfo" id="ModuleFooterInfo">
         </div>
     </div>
 
@@ -14,7 +14,7 @@
         <label class="uk-form-label" for="form-stacked-text">向未登录用户显示管理选项</label>
         <div class="uk-form-controls">
             <input type="hidden" name="ShowLoginOptions" value="off">
-            <input type="checkbox" <?php echo($db->getSetting('ShowLoginOptions') == 'on'?'checked':'');?>  name="ShowLoginOptions" id="ShowLoginOptions">
+            <input class="uk-checkbox" type="checkbox" <?php echo($db->getSetting('ShowLoginOptions') == 'on'?'checked':'');?>  name="ShowLoginOptions" id="ShowLoginOptions">
         </div>
     </div>
 
@@ -22,7 +22,7 @@
         <label class="uk-form-label" for="form-stacked-text">使用 Gravatar 头像<br>（关闭可提高页面加载速度）</label>
         <div class="uk-form-controls">
             <input type="hidden" name="UseGravatar" value="off">
-            <input type="checkbox" <?php echo($db->getSetting('UseGravatar') == 'on'?'checked':'');?>  name="UseGravatar" id="UseGravatar">
+            <input class="uk-checkbox" type="checkbox" <?php echo($db->getSetting('UseGravatar') == 'on'?'checked':'');?>  name="UseGravatar" id="UseGravatar">
         </div>
     </div>
 

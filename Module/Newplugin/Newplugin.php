@@ -2,7 +2,7 @@
 /*
 Module Name: test module
 Description: 测试
-Icon: ticket-star
+Icon: code
 Author: John Wu
 Author URI: Link to the author's web site
 Version: 1.0.0
