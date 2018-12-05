@@ -39,6 +39,11 @@ class CubeModule
 
     }
 
+    //Static Res URL.
+    protected function ResURL(){
+        return "/Module/{$this->Module['PathName']}/";
+    }
+
     protected function LoadPage($pageName){
         $filePath = BASEPATH . "/Module/{$this->Module['PathName']}/" . $pageName;
 
