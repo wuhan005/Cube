@@ -35,13 +35,11 @@ require_once 'core/SliderDisplayer.php';
 $slider = new SliderDisplayer;
 $slider->nowPage = $nowPage;    //Used to control the active class.
 
-// ======= Display Part =======
-
-//Load the page's header part.
-require_once 'core/templete/Header.php';
+//Load the UI part.
+require_once 'core/SlideBar.php';
 
 //Load the module.
 $mLoader->Load();
 
-//Load the page's footer part.
-require_once 'core/templete/Footer.php';
+//Load the footer.
+require_once 'core/Footer.php';
