@@ -36,42 +36,6 @@
         document.location = '';
     }
     </script>
-<<<<<<< HEAD:core/SlideBar.php
-
-</head>
-
-<body>
-    <!-- Top NavBar -->
-    <nav class="uk-navbar-container uk-margin" uk-navbar>
-        <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="/"><img src="/static/img/logo-xx.png"/></a>
-
-            <div class="uk-navbar-item uk-position-right">
-
-            </div>
-        </div>
-    </nav>
-
-    <div class="uk-grid">
-
-        <!--Slider Bar -->
-        <div class="uk-width-1-6@m ">
-            <ul class="uk-margin-small-left uk-nav-default uk-nav-parent-icon" uk-nav>
-                <li <?php echo $slider->active('Main');?>><a href="/Main"><span class="uk-margin-small-right" uk-icon="icon: home"></span> Home</a></li>
-                
-                <li class="uk-nav-header">Tools</li>
-                <?php $slider->showSlider();?>
-
-                <li class="uk-nav-header">Options</li>
-
-                <li <?php echo $slider->active('Account');?>><a href="/Account"><span class="uk-margin-small-right" uk-icon="icon: user"></span> Account</a></li>
-                
-                <?php if(!($db->getSetting('ShowLoginOptions') == 'off' AND $mod->isLogin() == false)){ ?>
-
-                    <li <?php echo $slider->active('Manager');?>><a href="/Manager"><span class="uk-margin-small-right" uk-icon="icon: settings"></span> Manager</a></li>
-                    <li <?php echo $slider->active('Data');?>><a href="/Data"><span class="uk-margin-small-right" uk-icon="icon: database"></span> Data</a></li>
-                    <li <?php echo $slider->active('Setting');?>><a href="/Setting"><span class="uk-margin-small-right" uk-icon="icon: cog"></span> Setting</a></li>
-=======
   </head>
 
   <body>
@@ -83,7 +47,6 @@
           <div class="be-right-navbar">
             <ul class="nav navbar-nav float-right be-user-nav">
               <li class="nav-item dropdown">
->>>>>>> parent of fea24c4... UI 更新，更换成 UIKit 框架:core/templete/Header.php
                 
                 <!--User Icon --> 
                   <a href="/Account" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
@@ -130,21 +93,6 @@
             </ul>
           </div>
         </div>
-<<<<<<< HEAD:core/SlideBar.php
-
-        <!-- Module Content -->
-        <div class="uk-width-5-6@m">
-            <!-- Module Name -->
-            <h1 class="uk-text-lead"><a class="uk-link-reset" href=""><?php echo($mLoader->module['Name'])?></a></h1>
-
-            <!-- Module Description -->
-            <p class="uk-article-meta"><?php echo($mLoader->module['Description'])?></p>
-
-            <!-- Breadcrumb -->
-            <ul class="uk-breadcrumb">
-                <li><?php echo($slider->topPage($mLoader->module['PathName']));?></li>
-                <li><a href="/<?php echo($mLoader->module['PathName']);?>"><?php echo($mLoader->module['Name']);?></a></li>
-=======
       </nav>
       <div class="be-left-sidebar">
         <div class="left-sidebar-wrapper"><a href="#" class="left-sidebar-toggle">Menu</a>
@@ -198,7 +146,6 @@
             ?>
               <li class="breadcrumb-item"><?php echo($slider->topPage($mLoader->module['PathName']));?></li>
               <li class="breadcrumb-item"><a href="/<?php echo($mLoader->module['PathName']);?>"><?php echo($mLoader->module['Name']);?></a></li>
->>>>>>> parent of fea24c4... UI 更新，更换成 UIKit 框架:core/templete/Header.php
                     <?php if(Method::getChildPage() != null){?>
                         <li class="breadcrumb-item active"><a href="/<?php echo($mLoader->module['PathName'] . '/' . Method::getChildPage());?>"><?php echo(Method::getChildPage());?></a></li>
                     <?php }?>
