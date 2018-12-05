@@ -1,39 +1,50 @@
-<form action="/Setting/UpdateSettingAction" method="POST"  class="uk-form-horizontal">
-    <legend class="uk-legend">通用</legend>
-    <span>Cube 的一般设置</span>
-
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-stacked-text">页面底部显示当前小工具信息</label>
-        <div class="uk-form-controls">
+<!-- 表单开始 -->
+<form action="/Setting/UpdateSettingAction" method="POST" style="border-radius: 0px;">
+<div class="card card-border-color card-border-color-primary">
+<!-- Cube 通用设置 标题 -->
+<div class="card-header card-header-divider">通用<span class="card-subtitle">Cube 的一般设置</span></div>
+<div class="card-body">
+    <div class="form-group row">
+        <label class="col-12 col-sm-5 col-form-label text-sm-right">页面底部显示当前小工具信息</label>
+        <div class="switch-button switch-button-lg">
             <input type="hidden" name="ModuleFooterInfo" value="off">
-            <input type="checkbox" <?php echo($db->getSetting('ModuleFooterInfo') == 'on'?'checked':'');?> name="ModuleFooterInfo" id="ModuleFooterInfo">
+            <input type="checkbox" <?php echo($db->getSetting('ModuleFooterInfo') == 'on'?'checked':'');?> name="ModuleFooterInfo" id="ModuleFooterInfo"><span>
+            <label for="ModuleFooterInfo"></label></span>
         </div>
     </div>
-
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-stacked-text">向未登录用户显示管理选项</label>
-        <div class="uk-form-controls">
+    <div class="form-group row">
+        <label class="col-12 col-sm-5 col-form-label text-sm-right">向未登录用户显示管理选项</label>
+        <div class="switch-button switch-button-lg">
             <input type="hidden" name="ShowLoginOptions" value="off">
-            <input type="checkbox" <?php echo($db->getSetting('ShowLoginOptions') == 'on'?'checked':'');?>  name="ShowLoginOptions" id="ShowLoginOptions">
+            <input type="checkbox" <?php echo($db->getSetting('ShowLoginOptions') == 'on'?'checked':'');?>  name="ShowLoginOptions" id="ShowLoginOptions"><span>
+            <label for="ShowLoginOptions"></label></span>
         </div>
     </div>
-
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-stacked-text">使用 Gravatar 头像<br>（关闭可提高页面加载速度）</label>
-        <div class="uk-form-controls">
+    <div class="form-group row">
+        <label class="col-12 col-sm-5 col-form-label text-sm-right">使用 Gravatar 头像（关闭可提高页面加载速度）</label>
+        <div class="switch-button switch-button-lg">
             <input type="hidden" name="UseGravatar" value="off">
-            <input type="checkbox" <?php echo($db->getSetting('UseGravatar') == 'on'?'checked':'');?>  name="UseGravatar" id="UseGravatar">
+            <input type="checkbox" <?php echo($db->getSetting('UseGravatar') == 'on'?'checked':'');?>  name="UseGravatar" id="UseGravatar"><span>
+            <label for="UseGravatar"></label></span>
         </div>
     </div>
-
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-stacked-text">ICP备案号<br>(留空则不显示)</label>
-        <div class="uk-form-controls">
-            <input name="ICP" value="<?php echo($db->getSetting('ICP')); ?>"  class="uk-input uk-form-width-medium" type="text" placeholder="中国服务器需备案">
+    <div class="form-group row">
+        <label class="col-12 col-sm-5 col-form-label text-sm-right" for="inputDefault">ICP备案号(留空则不显示)</label>
+        <div class="col-12 col-sm-8 col-lg-6">
+        <input name="ICP" class="form-control form-control-sm" id="inputDefault" type="text" value="<?php echo($db->getSetting('ICP')); ?>" placeholder="中国服务器需备案">
         </div>
     </div>
+   
+</div>
+<!-- 提交按钮 -->
+<div class="row">
+    <div class="col-sm-6">
 
-    <div class="uk-margin">
-        <button class="uk-button uk-button-primary" type="submit">保存设置</button>
     </div>
+    <div class="col-sm-6">
+        <p class="text-right pr-8">
+        <button class="btn btn-space btn-primary" type="submit">保存设置</button>
+        </p>
+    </div>
+</div>
 </form>
