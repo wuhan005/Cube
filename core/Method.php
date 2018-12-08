@@ -32,10 +32,10 @@ class Method{
 
     //URL router.
     public function get_current_page(){
-        $urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
-        if(@$urlPathInfo[2] != '')
+        $urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
+        if(@$urlPathInfo[2] != ''){
             return @$urlPathInfo[2];
-        else{
+        }else{
             return @$urlPathInfo[1];
         }
     }

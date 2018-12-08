@@ -4,7 +4,7 @@
 session_start();
 
 //URL Router, used to load main page.
-$urlPathInfo = @explode('/',$_SERVER['PATH_INFO']);
+$urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];
 if($nowPage == null){
     //If it is /index.php, then go to the mainpage.
