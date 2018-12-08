@@ -23,7 +23,7 @@ class Newplugin extends CubeModule{
     }
 
     public function NewPlugin(){
-        $this->LoadPage('testpage.php');
+        $this->Load('testpage.php');
     }
 
     public function qqq(){

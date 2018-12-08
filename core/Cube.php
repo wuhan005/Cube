@@ -16,6 +16,9 @@ if($nowPage == null){
 //Error message part.
 require_once 'Alert.php';
 
+//Load the config.
+require_once 'Config.php';
+
 //Load the database.
 require_once 'DataBase.php';
 $db = new DataBase;

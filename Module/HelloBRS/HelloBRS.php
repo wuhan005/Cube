@@ -14,7 +14,7 @@ class HelloBRS extends CubeModule{
     }
 
     public function HelloBRS(){
-        $this->LoadPage('main.php');
+        $this->Load('main.php');
     }
 }
 
