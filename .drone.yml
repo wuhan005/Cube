@@ -1,0 +1,26 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: backup
+    commands:
+      - cd /home/app/www/cube
+      - cp -rf /Moudle /Module_backup
+      - cp /Moudle/core/database/Cube.db /Cube_backup.db
+
+steps:
+  - name: install
+    commands:
+      - rm -rf !(/Module_backup Cube_backup.db)
+      - git clone https://github.com/wuhan005/Cube
+      - cp -rf /Cube/* /
+
+steps:
+  - name: recovery
+    commands:
+      - rm -rf Module
+      - rm /Moudle/core/database/Cube.db
+      - cp -rf Module_backup Module
+      - rm -rf Module_backup
+      - cp /Cube_backup.db /Moudle/core/database/Cube.db
+      - rm /Cube_backup.db
