@@ -1,27 +1,16 @@
 kind: pipeline
 name: default
 
-
-steps:
-  - name: backup
-    image: drone
-    commands:
-      - cd /data/www/cube
-      - cp -rf /Moudle /Module_backup
-      - cp /Moudle/core/database/Cube.db /Cube_backup.db
-
 steps:
   - name: install
-    image: drone
+    image: php7fpm
     commands:
+      - cd /var/www/html/cube
+      - cp -rf /Moudle /Module_backup
+      - cp /Moudle/core/database/Cube.db /Cube_backup.db
       - rm -rf !(/Module_backup Cube_backup.db)
       - git clone https://github.com/wuhan005/Cube
       - cp -rf /Cube/* /
-
-steps:
-  - name: recovery
-    image: drone
-    commands:
       - rm -rf Module
       - rm /Moudle/core/database/Cube.db
       - cp -rf Module_backup Module
