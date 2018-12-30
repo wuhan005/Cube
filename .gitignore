@@ -11,5 +11,7 @@ phpinfo.php
 .idea/Cube.iml
 .idea/vcs.xml
 *.xml
-/Module
+/Module/
+!/Module/HelloBRS/
+!Cube.sample.db
 core/database/Cube.db
