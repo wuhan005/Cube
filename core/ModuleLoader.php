@@ -15,6 +15,8 @@ class ModuleLoader
     private $moduleName;
     private $isSystem;
 
+    private $isError;
+
     public $module; //The module info used by the loader.
     public $nowModule;
 
@@ -34,8 +36,8 @@ class ModuleLoader
             }
         }
 
-        $this->setData();   //Get the module's data.
 
+        $this->setData();   //Get the module's data.
     }
 
     //Set the data for users.
@@ -57,11 +59,12 @@ class ModuleLoader
 
     //PUBLIC USED. Load the module.
     public function Load(){
+
         global $db;
         global $mod;
 
         //If the module is users', judge the module is started or not.
-        if(!$this->isSystem and !in_array($this->moduleName,$db->getOnModule())){
+        if(!$this->isSystem and !in_array($this->moduleName,$db->getOnModule()) and !$this->isError){
             $this->moduleHeader = $this->forbiddenPage(); //Set the forbidden data.
             $this->setData();  //Refresh the module data.
         }
@@ -72,6 +75,8 @@ class ModuleLoader
 
         require_once($this->module['Path']);    //Load the module file.
 
+
+        if($this->isError) return;      //If it is error page, load the content then return.
 
         //Make sure it is a standard module.
         if(!class_exists($this->module['PathName'])){
@@ -108,7 +113,7 @@ class ModuleLoader
         return $this->sysModule;
     }
 
-    private function getHeaderData($moduleName,$isSystem=false){
+    private function getHeaderData($moduleName, $isSystem = false){
 
         $this->moduleName = $moduleName;
         $this->isSystem = $isSystem;
@@ -123,7 +128,8 @@ class ModuleLoader
         if(!file_exists($this->modulePath)){
             //Return error header.
             //404 Error.
-            return $this->errorPage($this->moduleName);
+            $this->isError = true;
+            return $this->notFoundPage();
         }else{
             return $this->readHeaders();
         }
@@ -170,6 +176,7 @@ class ModuleLoader
         //Make sure the headers is correct.
         //'Name','Path' is not empty.
         if( ( $allHeaders['Name'] == '' ) or ( $allHeaders['Path'] == '') ){
+            $this->isError = true;
             return $this->errorPage('UNTITLED');
         }else{
             return $allHeaders;
@@ -185,6 +192,7 @@ class ModuleLoader
             'Icon'        => 'bug',
             'Author'      => '',
             'AuthorURI'   => '',
+            'Auth'        => '',
             'Path'        => './core/module/Error/Error.php'
         );
         return $errorHeaders;
@@ -199,9 +207,25 @@ class ModuleLoader
             'Icon'        => '',
             'Author'      => '',
             'AuthorURI'   => '',
+            'Auth'        => '',
             'Path'        => './core/module/Forbidden/Forbidden.php'
         );
         return $forbiddenHeaders;
+    }
+
+    //404 Not Found
+    private function notFoundPage(){
+        $notFoundHeaders = array(
+            'Name'        => '404 Not Found',
+            'Version'     => '',
+            'Description' => '',
+            'Icon'        => '',
+            'Author'      => '',
+            'AuthorURI'   => '',
+            'Auth'        => '',
+            'Path'        => './core/module/404/404.php'
+        );
+        return $notFoundHeaders;
     }
     
     //Clean the useless part.
