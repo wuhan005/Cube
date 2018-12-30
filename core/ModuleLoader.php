@@ -72,6 +72,12 @@ class ModuleLoader
 
         require_once($this->module['Path']);    //Load the module file.
 
+
+        //Make sure it is a standard module.
+        if(!class_exists($this->module['PathName'])){
+            Alert::show('不是标准的小工具，停止加载。');
+        }
+
         //Load the module.
         $this->cubeModule = new $this->module['PathName']();
         $this->cubeModule->Module = $this->module;
@@ -87,12 +93,6 @@ class ModuleLoader
         }else{
             //If the router is '', then to mainpage.
             $pageFunction = $this->cubeModule->router[''];
-        }
-
-
-        //Make sure it is a standard module.
-        if(!class_exists($this->module['PathName'])){
-            //Alert::show('不是标准的小工具，停止加载。');
         }
 
         //Execute!
