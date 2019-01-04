@@ -1,4 +1,4 @@
-    </div>
+</div>
         <!-- FOOTER -->
         <hr>
 <footer class="footer text-center text-muted">
@@ -18,13 +18,22 @@
 </div>
 
 </body>
-<script src="/static/lib/jquery.niftymodals/js/jquery.niftymodals.js" type="text/javascript"></script>
+
+<script src="/static/lib/jquery.niftymodals/dist/jquery.niftymodals.min.js" type="text/javascript"></script>
+<script src="/static/js/app.min.js" type="text/javascript"></script>
+<script src="/static/js/app-ui-notifications.js" type="text/javascript"></script>
+
 <script>
 $.fn.niftyModal('setDefaults',{
     overlaySelector: '.modal-overlay',
     contentSelector: '.modal-content',
     closeSelector: '.modal-close',
     classAddAfterOpen: 'modal-show'
+});
+
+$(document).ready(function(){
+    //-initialize the javascript
+    App.init();
 });
 </script>
 </html>

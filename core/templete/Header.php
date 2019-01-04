@@ -21,20 +21,12 @@
     <script src="/static/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <script src="/static/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
     <script src="/static/lib/jquery.gritter/js/jquery.gritter.min.js" type="text/javascript"></script>
-    <script src="/static/js/app.min.js" type="text/javascript"></script>
-    <script src="/static/js/app-ui-notifications.js" type="text/javascript"></script>
     <script src="/static/js/functions.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-      	//-initialize the javascript
-      	App.init();
-      });
-    </script>
 
     <script language='javascript'>
-    function refresh(){
-        document.location = '';
-    }
+        function refresh(){
+            document.location = '';
+        }
     </script>
   </head>
 
@@ -84,6 +76,7 @@
                 </div>
               </li>
             </ul>
+            <div class="page-title"><span>Blank Page</span></div>
             <ul class="nav navbar-nav float-right be-icons-nav">
               <li class="nav-item dropdown">
                   <a href="Setting" role="button" aria-expanded="false" class="nav-link be-toggle-right-sidebar">
@@ -147,7 +140,7 @@
               <li class="breadcrumb-item"><?php echo($slider->topPage($mLoader->module['PathName']));?></li>
               <li class="breadcrumb-item"><a href="/<?php echo($mLoader->module['PathName']);?>"><?php echo($mLoader->module['Name']);?></a></li>
                     <?php if(Method::getChildPage() != null){?>
-                        <li class="breadcrumb-item active"><a href="/<?php echo($mLoader->module['PathName'] . '/' . Method::getChildPage());?>"><?php echo(Method::getChildPage());?></a></li>
+                        <li class="breadcrumb-item active"><a href="/<?php echo(htmlentities($mLoader->module['PathName'] . '/' . Method::getChildPage()));?>"><?php echo(htmlentities(Method::getChildPage()));?></a></li>
                     <?php }?>
             </ol>
           </nav>
