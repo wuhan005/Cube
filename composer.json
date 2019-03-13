@@ -1,0 +1,13 @@
+{
+    "name": "johnwu/cube",
+    "description": "Create Everything You Like!",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Wu",
+            "email": "524306184@qq.com"
+        }
+    ],
+    "require": {}
+}

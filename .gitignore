@@ -15,3 +15,4 @@ phpinfo.php
 !/Module/HelloBRS/
 !Cube.sample.db
 core/database/Cube.db
+/vendor/
