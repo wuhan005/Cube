@@ -7,9 +7,9 @@ Author URI: Link to the author's web site
 Version: 1.0.0
 */
 
-require_once('core/ModuleFinder.php');
-require_once('core/ModuleLoader.php');
-require_once('core/File.php');
+require_once(COREPATH . '/core/ModuleFinder.php');
+require_once(COREPATH . '/core/ModuleLoader.php');
+require_once(COREPATH . '/core/File.php');
 
 class Manager extends CubeModule{
 

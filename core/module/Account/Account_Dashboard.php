@@ -1,6 +1,6 @@
 <div class="col-lg-7">
     <div class="user-display">
-        <div class="user-display-bg"><img src="/public/static/img/user-profile-display.png" alt="Profile Background"/></div>
+        <div class="user-display-bg"><img src="/static/img/user-profile-display.png" alt="Profile Background"/></div>
         <div class="user-display-bottom">
             <div class="user-display-avatar"><img src="
             <?php
