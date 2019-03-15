@@ -7,8 +7,8 @@ Author URI: https://wuhan5.cc/
 Version: 1.0.0
 */
 
-require_once('core/ModuleFinder.php');
-require_once('core/ModuleLoader.php');
+require_once(COREPATH . '/core/ModuleFinder.php');
+require_once(COREPATH . '/core/ModuleLoader.php');
 
 class Main extends CubeModule{
 

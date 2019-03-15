@@ -16,3 +16,4 @@ phpinfo.php
 !Cube.sample.db
 core/database/Cube.db
 /vendor/
+public/Module

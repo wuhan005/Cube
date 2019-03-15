@@ -3,6 +3,8 @@
 //Start Session.
 session_start();
 
+define('COREPATH', dirname(dirname(__FILE__)));     //Get the parent path. (Cube)
+
 //URL Router, used to load main page.
 $urlPathInfo = @explode('/', $_SERVER['PATH_INFO']);
 $nowPage = @$urlPathInfo[1];
@@ -29,20 +31,20 @@ require_once('Method.php');
 $mod = new Method;
 
 //Init the module.
-require_once 'core/ModuleLoader.php';
+require_once '../core/ModuleLoader.php';
 $mLoader = new ModuleLoader;
 $mLoader->Init($nowPage);
 
 //Init the silder.
-require_once 'core/SliderDisplayer.php';
+require_once '../core/SliderDisplayer.php';
 $slider = new SliderDisplayer;
 $slider->nowPage = $nowPage;    //Used to control the active class.
 
 //Load the UI part.
-require_once 'core/templete/Header.php';
+require_once '../core/templete/Header.php';
 
 //Load the module.
 $mLoader->Load();
 
 //Load the footer.
-require_once 'core/templete/Footer.php';
+require_once '../core/templete/Footer.php';

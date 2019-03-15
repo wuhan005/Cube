@@ -1,6 +1,6 @@
 <?php
-require_once('core/Functions.php');
-require_once('CubeModule.php');
+require_once('../core/Functions.php');
+require_once('../core/CubeModule.php');
 
 class ModuleLoader
 {
@@ -54,7 +54,7 @@ class ModuleLoader
         $this->module['Auth'] = $this->emptyFix($this->moduleHeader['Auth']);
         $this->module['PathName'] = $this->moduleName;    //The module folder's name.
         $this->module['Path'] = $this->moduleHeader['Path'];
-        $this->module['ResPath'] = '/Module/' . $this->moduleName . '/';
+        $this->module['ResPath'] = COREPATH . '/public/Module/' . $this->moduleName . '/';
     }
 
     //PUBLIC USED. Load the module.
@@ -119,9 +119,9 @@ class ModuleLoader
         $this->isSystem = $isSystem;
 
         if($isSystem){
-            $this->modulePath = 'core/module/' . $moduleName .'/' . $moduleName . '.php';
+            $this->modulePath = COREPATH . '/core/module/' . $moduleName .'/' . $moduleName . '.php';
         }else{
-            $this->modulePath = 'Module/'. $moduleName .'/' . $moduleName . '.php';
+            $this->modulePath = COREPATH . '/public/Module/'. $moduleName .'/' . $moduleName . '.php';
         }
 
         //Make sure the main PHP file is existed.
@@ -193,7 +193,7 @@ class ModuleLoader
             'Author'      => '',
             'AuthorURI'   => '',
             'Auth'        => '',
-            'Path'        => './core/module/Error/Error.php'
+            'Path'        => COREPATH . '/core/module/Error/Error.php'
         );
         return $errorHeaders;
     }
@@ -208,7 +208,7 @@ class ModuleLoader
             'Author'      => '',
             'AuthorURI'   => '',
             'Auth'        => '',
-            'Path'        => './core/module/Forbidden/Forbidden.php'
+            'Path'        => COREPATH . '/core/module/Forbidden/Forbidden.php'
         );
         return $forbiddenHeaders;
     }
@@ -223,7 +223,7 @@ class ModuleLoader
             'Author'      => '',
             'AuthorURI'   => '',
             'Auth'        => '',
-            'Path'        => './core/module/404/404.php'
+            'Path'        => COREPATH . '/core/module/404/404.php'
         );
         return $notFoundHeaders;
     }

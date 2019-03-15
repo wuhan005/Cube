@@ -24,7 +24,7 @@ class CubeModule
         $this->mod = $mod;  //Load the public function.
 
         $this->settingName = $this->Module['Name'];     //The setting name is the module name at first.
-        $this->ResURL = "/Module/{$this->Module['PathName']}";     //The module's path, used to load the static file.
+        $this->ResURL = COREPATH . "/public/Module/{$this->Module['PathName']}";     //The module's path, used to load the static file.
 
         //If it is system module, load the database API.
         if(isSystem){
@@ -43,13 +43,13 @@ class CubeModule
 
     //Static Resource URL.
     protected function ResURL(){
-        echo("/Module/{$this->Module['PathName']}");
+        echo("../Module/{$this->Module['PathName']}");
     }
 
 
     //Load all kinds of file.
     protected function Load($fileName){
-        $fileAbsPath = BASEPATH . "/Module/{$this->Module['PathName']}/" . $fileName;
+        $fileAbsPath = COREPATH . "/public/Module/{$this->Module['PathName']}/" . $fileName;
         $fileRelPath = "/Module/{$this->Module['PathName']}/" . $fileName;
         $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 

@@ -3,7 +3,7 @@
 class ModuleFinder{
 
     private $moduleList;
-    private $moudleDir = './Module';
+    private $moudleDir = COREPATH . '/public/Module';
 
     private function findModule(){
         //ONLY find the user's modules.
