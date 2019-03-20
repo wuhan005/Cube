@@ -53,17 +53,29 @@ class Method{
         return $nowPage;
     }
 
-    public function isLogin(){ 
-        $nowName = @$_SESSION['AccountName'];
-        $nowPasswd = @$_SESSION['AccountPasswd'];
-    
-        //Encrypt the password.
-        $encryptNowPasswd = hash('sha256',$nowPasswd . $this->db->getSetting('Salt'));
+    public function isLogin(){
+        //Check if it has LoginMethod.
+        if(isset($_SESSION['LoginMethod'])){
+            if($_SESSION['LoginMethod'] === 'GAAuth'){      //Logined by GA.
+                return true;
+            }
 
-        $realName = $this->db->getAccountData()['Account_Name'];
-        $realPasswd = $this->db->getAccountData()['Account_Password'];
-    
-        return ($realName === $nowName AND $realPasswd === $encryptNowPasswd);
+            //Logined by account.
+            $nowName = @$_SESSION['AccountName'];
+            $nowPasswd = @$_SESSION['AccountPasswd'];
+
+            //Encrypt the password.
+            $encryptNowPasswd = hash('sha256',$nowPasswd . $this->db->getSetting('Salt'));
+
+            $realName = $this->db->getAccountData()['Account_Name'];
+            $realPasswd = $this->db->getAccountData()['Account_Password'];
+
+            return ($realName === $nowName AND $realPasswd === $encryptNowPasswd);
+
+        }else{
+            return false;
+        }
+
     }
 
     //Current user data, return isLogin, name, mail.

@@ -7,7 +7,7 @@ Author URI: https://github.red/
 Version: 1.0.0
 */
 
-require_once('GoogleAuthenticator.php');
+require_once(COREPATH . '/core/vendor/GoogleAuthenticator.php');
 
 class Security extends CubeModule{
 
@@ -33,7 +33,7 @@ class Security extends CubeModule{
         $ga_key = $db->getSetting('GAAuth');
 
         if($ga_key === ''){
-            $secret = $this->ga->createSecret();    //Create new key
+            $secret = $this->ga->createSecret();    //Create new key.
 
             $data = array(
                 'secret' => $secret,

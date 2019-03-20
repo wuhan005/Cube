@@ -8,9 +8,17 @@ Version: 1.0.0
 Auth: No
 */
 
+require_once(COREPATH . '/core/vendor/GoogleAuthenticator.php');
+
 class Account extends CubeModule{
+
+    private $ga_key;
+
     public function __construct(){
         parent::__construct();
+
+        global $db;
+        $this->ga_key = $db->getSetting('GAAuth');
 
         //Register router.
         $this->router[''] = 'accountDashboard';
@@ -26,7 +34,9 @@ class Account extends CubeModule{
         global $db;
         global $mod;
 
-        if(!isset($_SESSION['AccountName'])){
+        $ga_key = $this->ga_key;
+
+        if(!isset($_SESSION['LoginMethod'])){       // Check the LoginMethod to make sure it is logined.
             require_once('Account_Login.php');
         }else{
             if($mod->isLogin()){
@@ -64,6 +74,18 @@ class Account extends CubeModule{
     public function loginAction(){
         global $db;
 
+        // GA 登录
+        if($this->ga_key !== ''){
+            $ga = new PHPGangsta_GoogleAuthenticator();
+
+            if($ga->verifyCode(json_decode($this->ga_key, true)['secret'], $_POST['Passwd'], 1)){
+                $_SESSION['LoginMethod'] = 'GAAuth';
+            }
+            redirect('/Account');
+            return;
+        }
+
+        // 账户登录
         $nowName = $_POST['Name'];
         $nowPasswd = $_POST['Passwd'];
 
@@ -75,6 +97,7 @@ class Account extends CubeModule{
 
         if($realName === $nowName AND $realPasswd === $encryptNowPasswd){
             //Use sessions.
+            $_SESSION['LoginMethod'] = 'Account';
             $_SESSION['AccountName'] = $nowName;
             $_SESSION['AccountPasswd'] = $nowPasswd;
 
