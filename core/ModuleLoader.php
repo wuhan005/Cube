@@ -6,7 +6,7 @@ class ModuleLoader
 {
     //The Cube system's module name.
     //The user can't use these name.
-    private $sysModule = ['Main','Setting','Account','Manager','Data'];
+    private $sysModule = ['Main','Setting','Account','Manager','Data', 'Security'];
 
     private $cubeModule; //Now module.
 
