@@ -11,6 +11,8 @@
 
     Cube · Create everything you want!
     <br>
+    Made with ❤️ by <a href="https://github.red">John Wu</a>.
+    <br>
     <a href="http://www.miitbeian.gov.cn/" target="_black"><?php echo($db->getSetting('ICP'));?></a>
 </footer>
         <!-- MODULE END HERE -->

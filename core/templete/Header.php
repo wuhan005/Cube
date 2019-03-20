@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Cube - Create Everything You Like!">
     <meta name="author" content="John Wu">
-    <link rel="shortcut icon" href="../static/img/logo-fav.png">
+    <link rel="shortcut icon" href="/static/img/logo-fav.png">
     <title>Cube</title>
     <link rel="stylesheet" type="text/css" href="/static/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
@@ -76,7 +76,11 @@
                 </div>
               </li>
             </ul>
-            <div class="page-title"><span>Blank Page</span></div>
+            <div class="page-title">
+                <span>
+                    <!-- 顶部副标题 -->
+                </span>
+            </div>
             <ul class="nav navbar-nav float-right be-icons-nav">
               <li class="nav-item dropdown">
                   <a href="Setting" role="button" aria-expanded="false" class="nav-link be-toggle-right-sidebar">
