@@ -15,6 +15,13 @@ class Security extends CubeModule{
 
     public function __construct(){
         parent::__construct();
+
+        global $mod;
+        if(!$mod->isLogin()){
+            redirect('/Account');
+            return;
+        }
+
         $this->router['OpenGoogleAuth'] = 'open_google_auth';
         $this->router['CloseGoogleAuth'] = 'close_google_auth';
 
