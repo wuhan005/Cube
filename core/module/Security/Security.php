@@ -5,6 +5,7 @@ Description: Cube 安全设置相关
 Author: John Wu
 Author URI: https://github.red/
 Version: 1.0.0
+Auth: Yes
 */
 
 require_once(COREPATH . '/core/vendor/GoogleAuthenticator.php');

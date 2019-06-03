@@ -5,6 +5,7 @@ Description: 小工具数据存储管理
 Author: John Wu
 Author URI: https://wuhan5.cc/
 Version: 1.0.0
+Auth: Yes
 */
 
 class Data extends CubeModule{

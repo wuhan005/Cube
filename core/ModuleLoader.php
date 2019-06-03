@@ -102,7 +102,7 @@ class ModuleLoader
 
         //Execute!
         //Make sure the account access.
-        if(($this->module['Auth'] == 'Yes' AND $mod->isLogin()) || $this->module['Auth'] != 'Yes'){
+        if(($this->module['Auth'] === 'Yes' AND $mod->isLogin()) || $this->module['Auth'] !== 'Yes'){
             $this->cubeModule->$pageFunction();
         }else{
             redirect('/Account');
