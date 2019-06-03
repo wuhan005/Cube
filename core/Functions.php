@@ -12,5 +12,7 @@ function showNotice($type = 'success',$title = '通知',$context = ''){
 }
 
 function redirect($url){
-    echo('<script>window.location.href="' . $url . '"; </script>');
+    ob_end_clean();     // Clean the output.
+    header('Location: ' . $url, TRUE);
+    exit;   // Important!! Prevent the PHP continue running.
 }

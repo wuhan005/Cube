@@ -2,6 +2,7 @@
 
 //Start Session.
 session_start();
+ob_start();     // For `redirect()`
 
 define('COREPATH', dirname(dirname(__FILE__)));     //Get the parent path. (Cube)
 
@@ -48,3 +49,5 @@ $mLoader->Load();
 
 //Load the footer.
 require_once '../core/templete/Footer.php';
+
+ob_end_flush();     // Show the content.
