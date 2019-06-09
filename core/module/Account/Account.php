@@ -18,6 +18,8 @@ class Account extends CubeModule{
         parent::__construct();
 
         global $db;
+
+        // Get the GA keys from database.
         $this->ga_key = $db->getSetting('GAAuth');
 
         //Register router.

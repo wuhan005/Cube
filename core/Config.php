@@ -7,4 +7,11 @@ class Config {
 
     //Allow modules' to use $this->Load to load which type of file?
     public static $allowedFile = ['php', 'css', 'js'];
+
+    //Database config.
+    public static $DB_HOST = 'localhost';
+    public static $DB_USER = 'root';
+    public static $DB_PASSWORD = 'root';
+    public static $DB_NAME = 'Cube';
+
 }
